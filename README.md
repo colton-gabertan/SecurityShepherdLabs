@@ -13,4 +13,4 @@ So, fire up BurpSuite and make sure that you're viewing the browser via the prox
 From here, locate the data to be extracted from the response header and capture that flag!
 
 ### BurpSuite Demo
-<img src="">
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/HTTP-Headers/httpHeaders.gif">
