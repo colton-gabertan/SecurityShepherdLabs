@@ -1,5 +1,5 @@
 # SecurityShepherdLabs
-CodePath Security Shepherd Lab Walkthroughs
+Security Shepherd Lab Walkthroughs
 
 * [week01]
 
