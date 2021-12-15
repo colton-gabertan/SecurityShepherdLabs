@@ -27,6 +27,8 @@ If the form is definitely displaying results for the odd numbered values, why no
 
 Success! You were able to access a hidden user, performing an insecure direct object reference. I do also highly encourage you to find your own method... perhaps with BurpSuite.
 
+### Secure Coding Considerations
+
 To deepen your understanding, I'd like to go over some pseudo code as to how this may have been implemented and it can serve as a great example of what *not* to do when developing a web app.
 
 ```
