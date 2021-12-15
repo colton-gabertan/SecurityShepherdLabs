@@ -14,4 +14,5 @@ Given this information, we need to take a look at the request we make to the ser
 
 Pay close attention to what we are actually sending to the web server. Experiment with changing things and see how it influences the responses. Based on the prompt, play around with some values in the outgoing request and see what is relevant to change. Once you're ready, hit send and see if what you did worked. 
 
+### Intercept Method:
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Direct-Object-References/IDOR.gif">
