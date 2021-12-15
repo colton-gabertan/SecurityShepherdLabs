@@ -39,7 +39,7 @@ userArr[] = {NULL, user1, NULL, user3, NULL, user5}; // and so on and so forth
 
 /*
 Now we'd also need to implement the function that can access the data stored within that array.
-This may be how the backend retrieves the data based on the request made via the front end
+This may be how the backend retrieves the data based on the request made via the frontend
 */
 
 function getUserMessage(int value, _userArr[])
