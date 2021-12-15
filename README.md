@@ -50,4 +50,4 @@ function getUserMessage(int value, _userArr[])
 
 As you can see, there are no security measures preventing hidden users from being displayed. The getUserMessage function will simply return the value passed to it. There is nothing guarding any of the data that is meant to be protected, resulting in a potential IDOR attack.
 
-With that in mind, when developing your own applications or working with developers, always be sure to note what is accessible and what is not; what should be, what shouldn't be, and how to implement those safeguards to prevent your own code from presenting this vulnerability.
+With that in mind, when developing your own applications or working with developers, always be sure to note what is accessible and what is not, what should be, what shouldn't be, and how to implement those safeguards to prevent your own code from presenting this vulnerability.
