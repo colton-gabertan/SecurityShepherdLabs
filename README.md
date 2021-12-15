@@ -22,5 +22,31 @@ Let's look for a pattern in those values, we can see it incrementing in odd orde
 
 If the form is definitely displaying results for the odd numbered values, why not try submitting an option with a value of what comes next in the list, 11.
 
+### Modifying request
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-1/IDORchallenge1-1.gif">
 
+Success! You were able to access a hidden user, performing an insecure direct object reference.
+
+To deepen your understanding, I'd like to go over some pseudo code as to how this may have been implemented and it can serve as a great example of what *not* to do when developing a web app.
+
+```
+*/
+Let's say that the user data is stored in an array and the values in the
+<option> tags correspond with the index of the array
+*/
+
+userArr[] = {NULL, user1, NULL, user3, NULL, user5}; // and so on and so forth
+
+/*
+Now we'd also need to implement the function that can access the data stored within that array.
+This may be how the backend retrieves the data based on the request made via the front end
+*/
+
+function getUserMessage(int value, _userArr[])
+{
+  return _userArr[value];
+}
+```
+
+As you can see, there are no security measures preventing hidden users from being displayed. The getUserMessage function will simply return the value passed to it. There is nothing guarding any of the data that is meant to be protected, resulting in a potential IDOR attack.
 
