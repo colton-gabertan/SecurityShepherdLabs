@@ -11,4 +11,10 @@ Similar to the IDOR introduction, we need to find some way to influence the data
 To view a page's source code you can right click on the page or a specific element and select *inspect element*, or a little shortcut for chromium-based browsers is to hit Ctrl+Shift+I. A good place to start would be at the form we are submitting.
 
 ### Inspecting the web form
-<img src="">
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-1/IDORchallenge1.gif">
+
+### Web form structure
+![image](https://user-images.githubusercontent.com/66766340/146166359-a26bb5b0-27a5-43c4-83c7-af228ad97901.png)
+
+
+
