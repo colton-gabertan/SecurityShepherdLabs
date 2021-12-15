@@ -16,7 +16,11 @@ To view a page's source code you can right click on the page or a specific eleme
 ### Web form structure
 ![image](https://user-images.githubusercontent.com/66766340/146166359-a26bb5b0-27a5-43c4-83c7-af228ad97901.png)
 
-So, from a very high level perspective, let's break down how this web form is functioning. We can see those **option** tags, within them containing the name of the user's profiles. However, notice how there is a value inside of the tag correlating with these names. In reference to the prompt, how can we manipulate something about these tags and submit something that we aren't supposed to?
+So, from a very high level perspective, let's break down how this web form is functioning. We can see those **option** tags, within them containing the name of the user's profiles. However, notice how there is a value inside of the tag correlating with these names. In reference to the prompt, how can we manipulate something about these tags and submit requests that we aren't supposed to?
+
+Let's look for a pattern in those values, we can see it incrementing in odd order: 1, 3, 5, 7, 9...
+
+If the form is definitely displaying results for the odd numbered values, why not try submitting an option with a value of what comes next in the list, 11.
 
 
 
