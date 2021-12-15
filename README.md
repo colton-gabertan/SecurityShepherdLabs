@@ -20,7 +20,7 @@ So, from a very high level perspective, let's break down how this web form is fu
 
 Let's look for a pattern in those values, we can see it incrementing in odd order: 1, 3, 5, 7, 9...
 
-If the form is definitely displaying results for the odd numbered values, why not try submitting an option with a value of what comes next in the list, 11.
+If the form is definitely displaying results for the odd numbered values, why not try submitting an option with a value of what comes next in the list, 11?
 
 ### Modifying request
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-1/IDORchallenge1-1.gif">
