@@ -24,9 +24,22 @@ Let's start cracking those hashes, recognizing a pattern!
 ### Crackstation demo
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-2/IDORchallenge2-0.gif">
 
+Crackstation also features the ability to identify the algorithm used to hash the value, in this case, md5.
+
+After some hash cracking, a pattern emerges: 2, 3, 5, 7, 11...
+
+They're prime numbers, so the next logical number in the list would be 13; however, we can't send 13 in plaintext, as this app is a bit more sophisticated, at least accepting hashes in the request. So we will need to find the md5 hash for the number 13. A quick google search for a tool to create md5 hashes and we can create the hash for our next value.
+
+Using [this tool], I was able to come up with a hash for the value 13
+```
+c51ce410c124a10e0db5e4b97fc2af39
+```
+
+So, let's plug it in and send out our tampered request!
 
 
 
 [IDOR Challenge 1]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-1/README.md
 [this article]: https://www.okta.com/identity-101/hashing-algorithms/
 [here]: https://crackstation.net/
+[this tool]: https://www.md5hashgenerator.com/
