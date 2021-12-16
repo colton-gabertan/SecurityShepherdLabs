@@ -22,7 +22,7 @@ I'd like to switch up the way we reach our flag for this challenge to showcase a
 So, let's fire up Burp and take a look at the packet we will be sending out!
 
 ### Burpsuite demo
-<img scr="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-2/IDORchallenge2-1.gif">
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-2/IDORchallenge2-1.gif">
 
 As we can see, I had Pat McKenana selected, and the value we are sending corresponds with the has we can find in the HTML. Now onto use the built-in decoder that Burp offers. Copy the value and head over to the decoder tab in Burp. Play around with the different encoding algorithms until you see the decoded value. It will set us up nicely once we know what is being obscured.
 
