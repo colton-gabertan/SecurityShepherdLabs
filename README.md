@@ -44,7 +44,7 @@ And just like that, we've not only performed another successful IDOR, but also g
 
 ## More Development Considerations
 
-As you can see, obscuring data with hashes has use cases that uphold the security principles of confidentiality, integrity, and authentication when it comes to storing and transferring data. However, although mathematically uncrackable, there are still ways around hashing. So, it is the developer's due diligence to keep up with what algorithms to use as well as how they are implemented.
+As you can see, obscuring data with hashes has use cases that uphold the security principles of confidentiality, integrity, and accessability when it comes to storing and transferring data. However, although mathematically uncrackable, there are still ways around hashing. So, it is the developer's due diligence to keep up with what algorithms to use as well as how they are implemented.
 
 [IDOR Challenge 1]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Challenge-1/README.md
 [this article]: https://www.okta.com/identity-101/hashing-algorithms/
