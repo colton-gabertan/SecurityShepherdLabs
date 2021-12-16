@@ -46,6 +46,16 @@ In the upper right hand corner, there is a *start attack* button. Hit it and let
 
 With these results, finding what we are looking for should be relatively easy. We can view the packet sent out and the response to our request. The length of the response is also listed. Given that we are looking for an account with a high balance, it is safe to say that the length will be longer than that of ours. Luckily we can sort by length by simply clicking on the label.
 
+Looks like this millionaire is going to have a very bad day. We know that their balance is greater than $5000000, so we're going to transfer it to ourselves. Make sure to take note of their accountNumber: 5451.
 
+With this information in mind, it's time to exploit it. We need to now intercept the packet that is responsible for requesting a transfer of funds.
 
+### Transfer Funds Request
+![image](https://user-images.githubusercontent.com/66766340/146336548-adc1f40f-a074-4882-bdc1-ec54049c8e9d.png)
 
+Perfect! there is a field, for the senderAccountNumber & recieverAccountNumber & transferAmount. Let's tamper with this packet by inputting the values we found via the sniper attack.
+
+### Tampered Packet
+![image](https://user-images.githubusercontent.com/66766340/146336762-7b322e8b-caad-47b4-bc47-922a8cdbe50e.png)
+
+Let's forward that packet, refresh our balance, and achieve an early retirement. We have successfully performed an IDOR manipulation to digitally rob a bank.
