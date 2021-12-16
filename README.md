@@ -1,4 +1,4 @@
-# Insecure Direct Object References Challenge 2
+# Insecure Direct Object References Bank Challenge
 
 **Instructions:**
 
@@ -29,5 +29,23 @@ Nice, there's a field where we can take advantage of the accountNumber.
 BurpSuite has a tab called Intruder which does what it sounds like it does. Here we are able to run all kinds of brute force attacks, but the one we'll focus on for now is called Sniper. Right-click on the packet and select *send to intruder*. Navigate to the tab and first to the Positions options.
 
 Clear out the pre-set positions, highlight only the one we want to be changing and hit the Add button. Our payload is prepped for this attack now.
+
+### Sending to Intruder and Editing Postions
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/IDOR-Bank-Challenge/IDORbank0.gif">
+
+Now that we have our payload positions set, time to navigate to the Payloads tab and specify the values we are going to feed to that position. In this case, we need to iterate through account numbers. Since we've made the newest account and our account number is 5502, it's a sound decision to decrement from 5502 - 5402. The settings to accomplish this will be listed below:
+
+### Payload Settings
+![image](https://user-images.githubusercontent.com/66766340/146334125-18c17705-ad22-4035-8ce0-4dfb1acac903.png)
+
+In the upper right hand corner, there is a *start attack* button. Hit it and let Burp do its thing!
+
+### Sniper Attack Results
+![image](https://user-images.githubusercontent.com/66766340/146335583-8b36d9cd-46d4-4a9f-8156-8067b83f807d.png)
+![image](https://user-images.githubusercontent.com/66766340/146335477-4381875a-7582-4ecd-b6ec-35e55d28c33f.png)
+
+With these results, finding what we are looking for should be relatively easy. We can view the packet sent out and the response to our request. The length of the response is also listed. Given that we are looking for an account with a high balance, it is safe to say that the length will be longer than that of ours. Luckily we can sort by length by simply clicking on the label.
+
+
 
 
