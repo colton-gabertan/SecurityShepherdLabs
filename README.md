@@ -40,11 +40,11 @@ Now that we have our payload positions set, time to navigate to the Payloads tab
 
 In the upper right hand corner, there is a *start attack* button. Hit it and let Burp do its thing!
 
+With these results, finding what we are looking for should be relatively easy. We can view the packet sent out and the response to our request. The length of the response is also listed. Given that we are looking for an account with a high balance, it is safe to say that the length will be longer than that of ours. Luckily we can sort by length by simply clicking on the label.
+
 ### Sniper Attack Results
 ![image](https://user-images.githubusercontent.com/66766340/146335583-8b36d9cd-46d4-4a9f-8156-8067b83f807d.png)
 ![image](https://user-images.githubusercontent.com/66766340/146335477-4381875a-7582-4ecd-b6ec-35e55d28c33f.png)
-
-With these results, finding what we are looking for should be relatively easy. We can view the packet sent out and the response to our request. The length of the response is also listed. Given that we are looking for an account with a high balance, it is safe to say that the length will be longer than that of ours. Luckily we can sort by length by simply clicking on the label.
 
 Looks like this millionaire is going to have a very bad day. We know that their balance is greater than $5000000, so we're going to transfer it to ourselves. Make sure to take note of their accountNumber: 5451.
 
