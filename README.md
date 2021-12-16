@@ -4,6 +4,7 @@
 * [HTTP Headers]
 * [Insecure Direct Object References]
 * [Insecure Direct Object References Challenge 1]
+* [Insecure Direct Object References Challenge 2]
 
 [HTTP Headers]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/HTTP-Headers/README.md
 [Insecure Direct Object References]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Direct-Object-References/README.md
