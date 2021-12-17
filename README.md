@@ -33,9 +33,9 @@ Let's hop back onto the intercepted packet, tamper with the request, and access 
 ### Web Response Page
 ![image](https://user-images.githubusercontent.com/66766340/146513583-25745ac3-375a-4e9e-a1f9-296eb16494b7.png)
 
-Oops, it looks like we got caught trying to hack this app. This queues us in to believe that we fell victim to the application's honeypot, which is a fake portion designed to let us observe the actions of a malicious user. It seems that this page is more sophisticated than we think, but some attention to detail may net us some redemption.
+Oops, it looks like we got caught trying to hack this app. This queues us in to believe that we fell victim to the application's honeypot, which is a fake portion designed to let us observe the actions of a malicious user. The session cookie in this case was set up as bait. It seems that this page is more sophisticated than we think, but some attention to detail may net us some redemption.
 
-Pay close attention to the way the prompt was worded. "Only **administrators**" and "**Administrator Only Button**". Let's try to encode the string "userRole=Administrator" to base64 and re-run our attack.
+Pay close attention to the way the prompt was worded. "Only **administrators**" and "**Administrator Only Button**". Let's try to encode the string "userRole=administrator" to base64 and re-run our attack.
 
 ### Encoding "userRole=administrator"
 ```
