@@ -10,7 +10,7 @@ This week we'll begin to start abusing broken authentication and session managem
 
 Because of the nature of cookies, we need to observe this application's behavior via Burpsuite. On this challenge we are simply presented with a *Complete This Lesson* button and we need to tamper with our request to trick the server into thinking we've actually completed the lesson.
 
-I decided to intercept the request, check out the information we are actually sending to the server, modify the LessonComplete field and forward the it.
+I decided to intercept the request, check out the information we are actually sending to the server, modify the LessonComplete field and forward it.
 
 ### Intercept, Tamper, Forward
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Broken-Session-Management/BrokenSessionManagement.gif">
