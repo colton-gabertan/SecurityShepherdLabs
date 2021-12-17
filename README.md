@@ -6,7 +6,7 @@ To complete this challenge you must sign in to a bank account that has more than
 
 ## Lab Walkthrough
 
-*Before getting started, as a general rule for the labs, we won't need to brute force a list of values that contain over 100 items in it*
+*Before getting started, as a general rule for the labs, we won't need to brute force with a list of values that contain over 100 items in it*
 
 Reading the prompt, it says we must sign in; however, IDOR isn't really a method that cracks passwords or user credentials. Instead what we can interpret is that we can reference an object that we shouldn't be able to. In this case, we should be able to reference another account's balance and transfer it to our own account.
 
