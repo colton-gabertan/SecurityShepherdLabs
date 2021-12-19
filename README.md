@@ -18,7 +18,7 @@ At this point I've chosen to crack open Burpsuite in order to observe the server
 ### Password Reset Response
 ![image](https://user-images.githubusercontent.com/66766340/146682859-bee60dfc-1437-4b89-9819-f6417fa19ffa.png)
 
-Interestingly enough, this server sends the new password as a response in the clear! All that's left is to login to admin with the new, reset password and grab that key.
+Interestingly enough, this server sends the new password as a response in the clear! All that's left is to login as admin with the new, reset password and grab that key.
 
 
 
