@@ -1,4 +1,4 @@
-# Session Management Challenge 2
+# Session Management Challenge 3
 
 **Instructions:**
 
