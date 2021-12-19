@@ -26,8 +26,15 @@ In turn, on the admin's HTML part of the page, the img tag will look like:
 <img src="https://security.codepath.com/root/grantComplete/csrfLesson?userId=1908824607">
 ```
 
-While the admin will see what looks like a broken image. The confusion tends to lead people to click on these; however, in this case his computer will run the GET request we intend for it to.
+While the admin will see what looks like a broken image. The confusion tends to lead people to click on these links; however, in this case his computer will run the GET request we intend for it to.
 
 ### Admin View:
 ![image](https://user-images.githubusercontent.com/66766340/146685060-6bb6aa86-740c-44c1-a2d9-cb5b32941da2.png)
+
+Hiding malicious requests in images and things of this nature is commonplace in phishing attacks, wherein a threat actor will hide either code or url's in emails for users to click on. This can result in them downloading malware, among other things.
+
+The next challenges in this week's labs do require you to have someone manually run your CSRF attack. So I suggest partnering up and studying up about how to take advantage of a server to host your malicious code. It is possible to do them solo; however, I will leave it up to your disgression as to how to accomplish that if you would like to do so.
+
+### Web Application Development Considerations
+In general, one good way to prevent an attack such as this one is to really control where these form submissions are sent. Make sure to sanitize input, ensuring that it is appropriate for the form. Strip it of anything resembling the code of your tech stack and make sure that nothing can really go through. There are secure frameworks, and taking advantage of them is wise, as the filtering functions are tried and true.
 
