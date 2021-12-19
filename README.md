@@ -20,3 +20,5 @@ Alright, also a bit better. Just as another security consideration, never send t
 ```
 current=WjNWbGMzUXhNZz09
 ```
+
+As this request is to reset the password, it is safe to assume that "current" refers to which user's password we are trying to reset. One thing they got right this time is obfuscating the value, but there surely must be a way to break that crypto. For this one, I recommend simply taking advantage of Burp's decoder.
