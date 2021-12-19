@@ -6,7 +6,7 @@ Only an admin of the following sub-application can retrieve the result key to th
 
 ## Lab Walkthrough
 
-This time around we are trying to get past some login credentials via poor session management. There's the login form and a reset password option, pretty standard for most web applications. Hence the prompt, let's try to see what happens when we login with the username *admin* and password *password*.
+This time around we are trying to get past some login credentials via poor session management and broken authentication. There's the login form and a reset password option, pretty standard for most web applications. Hence the prompt, let's try to see what happens when we login with the username *admin* and password *password*.
 
 ### Server Response
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Session-Management-Challenge-2/SesManagementChallenge2-0.gif">
