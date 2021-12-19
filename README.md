@@ -16,4 +16,7 @@ Good, it looks like they stopped showing the admin's email address, but they sti
 ### Client-Server Traffic: Change Password
 ![image](https://user-images.githubusercontent.com/66766340/146683508-6b3269c1-4a5a-40c1-8115-9607f8bd9141.png)
 
-Alright, also a bit better. Just as another security consideration, never send the new password value in the clear, as anyone listening in will pretty easily steal that bit of information. Furthermore, taking notice to the cookies, 
+Alright, also a bit better. Just as another security consideration, never send the new password value in the clear, as anyone listening in will pretty easily steal that bit of information. Furthermore, taking notice to the cookies, we can see this field:
+```
+current=WjNWbGMzUXhNZz09
+```
