@@ -34,11 +34,11 @@ Since inputting an IMG tag would likely cause the page to throw an error, I'm op
 ```
 
 Just a quick breakdown of this line: \
-The expected input is a regular string, so trying to insert some HTML will more than likely cause the error to be thrown. Since the IMG needs the src attribute, all we need to do is comment out the value with "#". The nice thing about this tag is that we are allowed to use the ONERROR attribute and inject our javascript here.
+The expected input is a regular string, so trying to insert some HTML will more than likely cause the error to be thrown, especially since we're attempting to upload an image. Since the IMG needs the src attribute, all we need to do is comment out the value with "#". The nice thing about this tag is that we are allowed to use the ONERROR attribute and inject our javascript here.
 
 So now, let's test our assumption that the SCRIPT tag is the only thing getting filtered out.
 
 ### Bypassing Filter
 ![image](https://user-images.githubusercontent.com/66766340/146686997-6c6cf136-77dc-4f2b-8f65-b7e49921e06b.png)
 
-Thanks to a bit of testing in the beginning, we were able to come to a solid argument and test our hypothesis. This was a very trivial filter. In the next tasks, we will need to start getting even more creative.
+Thanks to a bit of testing in the beginning, we were able to come to a solid argument and test our hypothesis. This was a very trivial filter. In the next tasks, we will need to start getting even more creative as the developers adjust their filters.
