@@ -22,3 +22,7 @@ current=WjNWbGMzUXhNZz09
 ```
 
 As this request is to reset the password, it is safe to assume that "current" refers to which user's password we are trying to reset. One thing they got right this time is obfuscating the value, but there surely must be a way to break that crypto. For this one, I recommend simply taking advantage of Burp's decoder.
+
+*Side note: just to start gaining more familiarity with encodings/ encryptions, base64 **generally** ends with an "=" or "=="; however, it is not always the case. Some other key factors to look out for is if the length is a multiple of 4, and if it is using only specific characters that base64 implements in its algorithm.*
+
+
