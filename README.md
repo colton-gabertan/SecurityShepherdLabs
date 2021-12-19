@@ -20,6 +20,8 @@ At this point I've chosen to crack open Burpsuite in order to observe the server
 
 Interestingly enough, this server sends the new password as a response in the clear! All that's left is to login as admin with the new, reset password and grab that key.
 
+### Secure Web Application Design Considerations
 
+As demonstrated in this lab, that was a very poorly designed login feature and login recovery feature, in terms of security. Always consider your user's sensitive data, and never display any of it in the front-end or in the clear. Always be weary of how easy it is to capture back and forth traffic, and use a bit of common sense to protect not only your application, but also your users. 
 
 
