@@ -35,6 +35,8 @@ Hiding malicious requests in images and things of this nature is commonplace in 
 
 The next challenges in this week's labs do require you to have someone manually run your CSRF attack. So I suggest partnering up and studying up about how to take advantage of a server to host your malicious code. It is possible to do them solo; however, I will leave it up to your disgression as to how to accomplish that if you would like to do so.
 
+---
+
 ### Web Application Development Considerations
 In general, one good way to prevent an attack such as this one is to really control where these form submissions are sent. Make sure to sanitize input, ensuring that it is appropriate for the form. Strip it of anything resembling the code of your tech stack and make sure that nothing can really go through. There are secure frameworks, and taking advantage of them is wise, as the filtering functions are tried and true.
 
