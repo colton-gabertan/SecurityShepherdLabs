@@ -10,7 +10,7 @@ To complete this lesson, use the Update User Image form below. The form accepts 
 
 ## Lab Walkthrough
 
-One thing to note about CSRF is that, in order for it to work, it requires that the user to run your request. This type of attack is very sneaky and takes advantage of tricking users into clicking on elements that they normally would. For this lesson, we need to update the img tag that an admin will be clicking on to review, in turn forcing them to make a malicious request without their knowledge. 
+One thing to note about CSRF is that, in order for it to work, it requires the user to run your request. This type of attack is very sneaky and takes advantage of tricking users into clicking on elements that they normally would. For this lesson, we need to update the img tag that an admin will be clicking on to review, in turn forcing them to make a malicious request without their knowledge. 
 
 Essentially, we are trying to set the src inside of an image tag to make a HTTP GET request to a malicious domain.
 
