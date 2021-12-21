@@ -1,10 +1,10 @@
 # SecurityShepherdLabs
 Security Shepherd Lab Walkthroughs
 
-* [week01]
-* [week02]
-* [week03]
+* [Data Exposures]
+* [Cookie and Session-based Attacks]
+* [Cross Site Scripting]
 
-[week01]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week01/README.md
-[week02]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week02/README.md
-[week03]: https://github.com/colton-gabertan/SecurityShepherdLabs/tree/week03
+[Data Exposures]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week01/README.md
+[Cookie and Session-based Attacks]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week02/README.md
+[Cross Site Scripting]: https://github.com/colton-gabertan/SecurityShepherdLabs/tree/week03
