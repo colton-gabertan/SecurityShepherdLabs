@@ -22,7 +22,7 @@ Web pages prompt users in a way where their input will be a valid field value fo
 ### Web Form for SQL Query Prompt
 ![image](https://user-images.githubusercontent.com/66766340/147068745-e4272513-0e82-4255-9371-1dc752edde3c.png)
 
-Given that we're searching for user names of users, we can assume that the query looks something like:
+Given that we're searching for general information of users based on the username, we can assume that the query looks something like:
 ```MySQL
 SELECT * FROM users WHERE user_name=''
 ```
