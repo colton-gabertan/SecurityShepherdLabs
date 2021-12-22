@@ -1,4 +1,4 @@
-# SQL Injection
+# SQL Injection 1
 
 **Instructions:**
 
@@ -29,3 +29,10 @@ Let's add onto the query, similarly to the last challenge:
 ```MySQL
 "or"1=1
 ```
+
+We'll inject this into the search query and see if we can get another table to dump.
+
+### "or"1=1
+![image](https://user-images.githubusercontent.com/66766340/147098792-c6b28dbe-20bf-4f3f-8554-152470f13ecb.png)
+
+As you can see, SQLI will be very picky and it ultimately depends on how the application was programmed. This makes these types of filters a bit more tricky to figure out, so I encourage you to continue playing around with the syntax, experimenting, and ultimately dumping those tables to collect those flags!
