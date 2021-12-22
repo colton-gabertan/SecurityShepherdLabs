@@ -49,5 +49,21 @@ if substr1 in userInput:
 ```
 *[Python3 slicing] to understand the psuedocode a bit better*
 
+This filter is pretty smart, but the fact that it relies on too many conditionals, leaves it pretty flexible to leaving in excess input. It also deletes only certain parts of the string and doesn't take into consideration the full length of the input. This leaves a bit *too much* trust to the users.
+
+Let's try to craft a string that takes advantage of our ability to leave in a few excess characters. Assume that we run the string "ONONCLICKSUBMIT" as our event tag.
+
+1. First condition satisfied, deletes the first "ON" leaving us now with "ONCLICKSUBMIT"
+2. Second condition satsified, skips over ON and deletes "CLICK". Our string is now "ONSUBMIT"
+
+This is our hypothesis, let's edit our input and run the attack again:
+```HTML
+<INPUT TYPE="BUTTON" ONONCLICKSUBMIT="alert('XSS')"/>
+```
+
+### Defeating the Filter
+![image](https://user-images.githubusercontent.com/66766340/147017269-82d5a2ff-f979-472a-aab8-57f224a37fb9.png)
+
+Nice! We bypassed the filter and triggered the alert. Can you think of a few more test cases in which we can defeat this particular filter?
 
 [Python3 slicing]: https://www.w3schools.com/python/python_strings_slicing.asp
