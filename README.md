@@ -22,7 +22,7 @@ So we know how to escape the first quote, but one way to escape the end quote, e
 ```MySQL
 \'or 1=1;-- 
 ```
-*make sure you have the trailing space after the comment symbol
+*make sure you have the trailing space after the comment symbol*
 
 ### Closing the End Quote, Modifying Query
 ![image](https://user-images.githubusercontent.com/66766340/147105054-cf058c3f-01f4-4935-a616-dd1eba114c23.png)
