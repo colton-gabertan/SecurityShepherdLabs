@@ -27,7 +27,7 @@ Given that we're searching for general information of users based on the usernam
 SELECT * FROM users WHERE user_name=''
 ```
 
-Building upon our skill set from XSS, we can picture the queries and try to inject some additonal SQL to get the server to display too much information. Given that this language sports logical operations, we can also take great advantage of boolean values.
+Building upon our skill set from XSS, we can picture the queries and try to inject some additonal SQL to get the server to display too much information. Given that this language supports logical operations, we can also take great advantage of boolean values.
 
 I'll craft an injection that looks like:
 ```MySQL
