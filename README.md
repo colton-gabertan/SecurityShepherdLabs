@@ -46,5 +46,7 @@ Let's see it it works!
 ### RCE from SQLI
 ![image](https://user-images.githubusercontent.com/66766340/147070269-2233209e-113a-4a57-b9fa-53d215c025d0.png)
 
+As you can see, the entire table is displayed, when normally only one row of the table should be. This has lead to a data breach of the entire user base.
+
 [Free Khan Academy on SQL]: https://www.khanacademy.org/computing/computer-programming/sql
 [Free SQL Udemy Course]: https://www.udemy.com/course/introduction-to-databases-and-sql-querying/
