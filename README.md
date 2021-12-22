@@ -16,7 +16,7 @@ Interestingly enough, it actually escapes all apostrophes. It doesn't seem to ma
 ### Escaping Our Own Quote
 ![image](https://user-images.githubusercontent.com/66766340/147104527-808aa288-bdd9-4112-904f-0bcefcb0649b.png)
 
-Nice, we got the error, meaning we can start to affect the query. However, given that it escapes quotes, it may be safe to assume that the end quote is put in automatically. We may be able to escape the first quote, but there is still a pesky one at the end that would effect our ability to fully escape the string. Luckily, SQL, like any other programming language can comment with "-- ". 
+Nice, we got the error, meaning we can start to affect the query. However, given that it escapes quotes, it may be safe to assume that the end quote is put in automatically. We may be able to escape the first quote, but there is still a pesky one at the end that would effect our ability to fully escape the string. Luckily, MySQL, like any other programming language can comment with "-- ". 
 
 So we know how to escape the first quote, but one way to escape the end quote, effectively closing the string would be to simply comment it out. My modified input looks like:
 ```MySQL
