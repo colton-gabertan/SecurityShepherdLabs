@@ -1,4 +1,4 @@
-# Cross Site Scripting 1
+# Cross Site Scripting 2
 
 **Instructions:**
 
