@@ -14,7 +14,7 @@ The following search box outputs untrusted data without any validation or escapi
 
 ## Lab Walkthrough
 
-In my opinion, this is where we begin to exercise our creativity and demonstrate a bit more code knowledge. The first line of defense agains Cross Site Scripting (XSS) is filtering inputs on the web application. In a more practical sense, it wouldn't be filtered right at the front-end, as that would offer hints as to how to defeat these filters; however, for the purposes of lab, we will be inspecting the page a lot to try and experiment with XSS inputs.
+In my opinion, this is where we begin to exercise our creativity and demonstrate a bit more code knowledge. The first line of defense against Cross Site Scripting (XSS) is filtering inputs on the web application. In a more practical sense, it wouldn't be filtered right at the front-end, as that would offer hints as to how to defeat these filters; however, for the purposes of lab, we will be inspecting the page a lot to try and experiment with XSS inputs.
 
 Essentially, when we inject this code, the web server will interpret it as its own, allowing attackers the full power of HTML and javascript to do whatever they want with the page. This is why XSS is so dangerous. Attackers can do things ranging from defacing the website, hijack user sessions by abusing the cookies, or even steal accounts and private data with one wrong click from the user.
 
