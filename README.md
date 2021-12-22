@@ -11,7 +11,7 @@ Given the prompt, it seems that the filter has caught onto our typical method of
 ### Testing the Filter
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-Escaping/SQLIescaping.gif">
 
-Interestingly enough, it actually escapes all apostrophes. It doesn't seem to matter if they're encapsulated as double-quotes as well. One more test we could try is to see how it behaves if we escape our own apostrophes. SQL allows this if you pre-pend a "\" quote. Let's test out the form further.
+Interestingly enough, it actually escapes all apostrophes. It doesn't seem to matter if they're encapsulated as double-quotes as well. One more test we could try is to see how it behaves if we escape our own apostrophes. SQL allows this if you pre-pend a backslash to a quote. Let's test out the form further.
 
 ### Escaping Our Own Quote
 ![image](https://user-images.githubusercontent.com/66766340/147104527-808aa288-bdd9-4112-904f-0bcefcb0649b.png)
