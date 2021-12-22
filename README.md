@@ -10,7 +10,7 @@ These labs do assume some basic understanding of SQL. If it is your first time c
 * [Free Khan Academy on SQL]
 * [Free SQL Udemy Course]
 
-For our labs, we will mostly be looking into how we can take advantage of the search query specifically. These web pages make requests to its backend which is in SQL, so if we can achieve remote code execution via sqli, we will mostly be using it to expose data that we normally shouldn't be allowed to see.
+For our labs, we will mostly be looking into how we can take advantage of the search query specifically. These web pages make requests to its backend which is in SQL, so if we can achieve remote code execution via sqli, we will mostly be using it to expose data that we normally shouldn't be allowed to see. However, the capability of SQLI spans much further than that.
 
 Let's take a look at the structure of a search query:
 ```MySQL
