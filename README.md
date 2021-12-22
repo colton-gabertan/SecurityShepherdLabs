@@ -21,7 +21,7 @@ Let's see how the filter works this time around:
 ### Probing Filter
 ![image](https://user-images.githubusercontent.com/66766340/147015259-a13a1e16-3ea9-498c-9310-0cf09ee9c48c.png)
 
-Good, it looks our INPUT tag still gets interpreted; however, our entire event handler was filtered out this time. Let's mess around with the string and see if we can get it to run. Assuming that it is purely looking for event handlers, all of them are pre-pended with the substring: "on". I want to test if this filter is intelligent enough to see that and wipe out the entire string.
+Good, it looks like our INPUT tag still gets interpreted; however, our entire event handler was filtered out this time. Let's mess around with the string and see if we can get it to run. Assuming that it is purely looking for event handlers, all of them are pre-pended with the substring: "on". I want to test if this filter is intelligent enough to see that and wipe out the entire string.
 
 ### Adjusted Input:
 ```HTML
@@ -32,7 +32,7 @@ Good, it looks our INPUT tag still gets interpreted; however, our entire event h
 ### Filter Behavior
 ![image](https://user-images.githubusercontent.com/66766340/147015483-ee91bdf9-a7a5-46df-8f73-b5d1032cd99e.png)
 
-Nice, it looks like we're getting a bit warmer. It included the second "on", but filtered out the "click". So logically, this filter may work in a manner where if it detects the substring "on", it will look for "click" (or any other event handler tag) after, and if the substring "click" is present, it will filter it out. However, anything after the intial "on" is fair game, especially since it allowed a second instance of the substring "on". We can also assume that if we trigger the second part of the filter, it will likely leave and excess input in as well. 
+Nice, it looks like we're getting a bit warmer. It included the second "on", but filtered out the "click". So logically, this filter may work in a manner where if it detects the substring "on", it will look for "click" (or any other event handler tag) after, and if the substring "click" is present, it will filter it out. However, anything after the intial "on" is fair game, especially since it allowed a second instance of the substring "on". We can also assume that if we trigger the second part of the filter, it will likely leave any excess input in as well. 
 
 So it looks like we'll simply have to play by the rules of the filter. But first, I'll draft up a bit of pseudo code to show it on a programatic level:
 
