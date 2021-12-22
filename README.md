@@ -44,8 +44,8 @@ string substr2 = "click" # or a list of the event handlers (submit, load, etc...
 if substr1 in userInput:
   userInput = userInput[2:] # filters out "on" 
   
-  if substr2 in userInput: # look for the attribute, delete next n characters where n = length of event tag
-    userInput = userInput[:n]
+  if substr2 in userInput: # look for the attribute, delete the substr2
+    userInput = userInput - substr2
 ```
 *[Python3 slicing] to understand the psuedocode a bit better*
 
