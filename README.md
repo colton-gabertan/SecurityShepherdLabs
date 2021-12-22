@@ -24,6 +24,6 @@ So, we've found out a couple of things. As long as there is a string that follow
 This new input string both tells the backend to dump the table and satisfies the email validation filter.
 
 ### Adding to Query, Following Email Condition
-![image](https://user-images.githubusercontent.com/66766340/147101350-b41f8cf8-f323-4eba-8c08-40fd255ec854.png)
+![image](https://user-images.githubusercontent.com/66766340/147101852-65642792-c12c-401d-8260-ff36fa2cb459.png)
 
 And just like that, because of poor email validation, we are able to manipulate the search query and dump the table! This one goes to show that filtering may seem like common sense; however, it is still important to run all possibilites when testing. Always consider how your filters may be broken and address ways that they may be improved.
