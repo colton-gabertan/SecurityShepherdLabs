@@ -64,6 +64,6 @@ This is our hypothesis, let's edit our input and run the attack again:
 ### Defeating the Filter
 ![image](https://user-images.githubusercontent.com/66766340/147017269-82d5a2ff-f979-472a-aab8-57f224a37fb9.png)
 
-Nice! We bypassed the filter and triggered the alert. Can you think of a few more test cases in which we can defeat this particular filter?
+Nice! We bypassed the filter and triggered the alert. Can you think of a few more test cases in which we can defeat this particular filter? I encourage you to find some interesting behavior and maybe even adjust the pseudocode I provided to demonstrate fully how this filter works.
 
 [Python3 slicing]: https://www.w3schools.com/python/python_strings_slicing.asp
