@@ -17,5 +17,33 @@ Let's take a look at the structure of a search query:
 SELECT field_list FROM table WHERE field=''
 ```
 
+Web pages prompt users in a way where their input will be a valid field value for whatever the server must lookup for them. Let's take a look at our lab's input field and make some assumptions about the search query here.
+
+### Web Form for SQL Query Prompt
+![image](https://user-images.githubusercontent.com/66766340/147068745-e4272513-0e82-4255-9371-1dc752edde3c.png)
+
+Given that we're searching for user names of users, we can assume that the query looks something like:
+```MySQL
+SELECT user_name FROM users WHERE field=''
+```
+
+Building upon our skill set from the last challenge, we can picture the queries and try to inject some additonal SQL to get the server to display too much information. Given that this language sports logical operations, we can also take great advantage of boolean values.
+
+I'll craft an injection that looks like:
+```MySQL
+'or'1=1
+```
+
+Appending this to the query it'll look like:
+```MySQL
+SELECT user_name FROM users WHERE field='''or'1=1'
+```
+
+Depending on how our input is handled, this query will simply display ALL of the user names, because of the True evaluation that results from the 1=1. The logical "or" operator ensures that only 1 needs to equal 1 in order for the results to be displayed. The pre-pended (') is there to close out the initial query's string and let us add onto the query instead of the user's input string.
+
+Let's see it it works!
+
+
+
 [Free Khan Academy on SQL]: https://www.khanacademy.org/computing/computer-programming/sql
 [Free SQL Udemy Course]: https://www.udemy.com/course/introduction-to-databases-and-sql-querying/
