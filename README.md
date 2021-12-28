@@ -93,6 +93,7 @@ One cryptographic algorithm that uses a key and wrapping is called the Vigenere 
 
 ### Vigenere Cipher
 [![Vigenere Cipher](https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Cryptographic-Storage-2/vigenere.gif)](http://www.youtube.com/watch?v=SkJcmCaHqS0)
+
 *click on the gif for a quick explanation*
 
 Further analyzing this function, we can spot an output validation section here:
