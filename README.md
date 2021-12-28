@@ -16,6 +16,7 @@ Encryption, on the other hand, is intentionally used to hide data from malicious
 Anyways, for this first lab, I'd like to introduce you to one of my favorite tools, [Cyber Chef]. It is extremely useful for situations in which you need to decode/encode data. It also supports some unique features regarding cryptographic topics, such as using specific algorithms to encrypt and decrypt data.
 
 ### Decoding Using CyberChef
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Cryptographic-Storage/ICS.gif">
 
 
 [Cyber Chef]: https://gchq.github.io/CyberChef/
