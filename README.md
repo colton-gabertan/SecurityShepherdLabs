@@ -22,7 +22,7 @@ Therefore if we wanted to send the capital letter "A", it would shift to the cap
 
 As you can see it is a pretty weak form of crypto as it would only take a max of 25 tries to crack the ciphertext. However, it serves as a gentle introduction to cryptography as we start to see other weak implementations.
 
-Luckily CyberChef can also help us Caesar's Ciphers with its ROT13 tool. All we need to do is look for the rotation value that was used in the encryption of this message.
+Luckily CyberChef can also help us decrypt Caesar's Ciphers with its ROT13 tool. All we need to do is look for the rotation value that was used in the encryption of this message.
 
 ### Cracking Caesar's Cipher w/ CyberChef
 ![image](https://user-images.githubusercontent.com/66766340/147607634-3948b839-acc7-4d9f-851c-38456c0c2bfc.png)
