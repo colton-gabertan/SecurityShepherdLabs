@@ -36,4 +36,10 @@ Mary Martin' UNION SELECT creditcardnumber FROM customers WHERE customername = '
 I included Mary Martin's name in the first part in order to satisfy the field's filter, closing the first string with the single quote. I then inserted our UNION clause, and experimented with what the developers may have named the fields. From there, I delimited the line syntatically with ";" and commented out the last quote in order to end the search query.
 
 ### Injecting the UNION Clause
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-3/SQLI3.gif">
 
+--
+
+### Developer Considerations
+
+Although it was somewhat well thought out in how they restriced the information shown in the default search query, they still left sensitive information accessible in a regular search query from this form. When managing databases, it is important to be able to really restrict the sensitive information to only the people who should be seeing it. Handle sensitive data accordingly and make sure to guard it closely in order to protect not only the user, but also the company/ organization that hosts the web application.
