@@ -93,4 +93,21 @@ One cryptographic algorithm that uses a key and wrapping is called the Vigenere 
 
 ### Vigenere Cipher
 [![Vigenere Cipher](https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Cryptographic-Storage-2/vigenere.gif)](http://www.youtube.com/watch?v=SkJcmCaHqS0)
+*click on the gif for a quick explanation*
 
+Further analyzing this function, we can spot an output validation section here:
+```javascript
+if(output == "DwsDagmwhziArpmogWaSmmckwhMoEsmgmxlivpDttfjbjdxqBwxbKbCwgwgUyam")
+	$('#resultDiv').html("<p>Yeah, that's correct</p>");
+```
+So, to take inventory of what we know, we have:
+1. the key
+2. the cipher
+3. output validation string
+
+Let's hop back onto CyberChef and see if we can crack this Vigenere implementation.
+
+### Cracking Vigenere Cipher w/ CyberChef
+![image](https://user-images.githubusercontent.com/66766340/147610379-45ca6212-d0ee-42fd-a7ff-48b07926892f.png)
+
+As you can see, the developers left their crypto implementations out in the open. This allowed us to extract the necessary information to crack their encrytion. It is also generally bad practice to have a validation such as this one, as it makes it extremely easy to bypass certain securities in other types of user input forms.
