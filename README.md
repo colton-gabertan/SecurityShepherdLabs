@@ -21,7 +21,19 @@ This query is alright for dumping general information about a given user; howeve
 SELECT credit_card_number FROM customers WHERE customer_name='Mary Martin';
 ```
 
-So essentially, instead to accessing general information that is publicly accessible we need to modify the original search query so that it includes the fields we want to access. This is where the UNION operator comes in handy. Syntatically, this allows us to combine search queries in SQL. The full query after our injection should look like:
+So essentially, instead of accessing general information that is publicly available, we need to modify the original search query so that it includes the fields we want to access. This is where the UNION operator comes in handy. Syntatically, this allows us to combine search queries in SQL. The full query after our injection should look like:
 ```MySQL
 SELECT * FROM customers WHERE customer_name='Mary Martin' UNION SELECT credit_card_number FROM customers WHERE customer_name='Mary Martin';
 ```
+
+Now that we know what our query needs to be, it is a matter of defeating whatever filters are implemented as well as getting the field names correct. It is good practice in software engineering to give things names that make sense, so I'd maybe test the injection using camelCase, snake_case, or simply lowercase.
+
+Knowing that we can easily close the string with a single quote, our actual injection should look like:
+```MySQL
+Mary Martin' UNION SELECT creditcardnumber FROM customers WHERE customername = 'Mary Martin;--   
+```
+
+I included Mary Martin's name in the first part in order to satisfy the field's filter, closing the first string with the single quote. I then inserted our UNION clause, and experimented with what the developers may have named the fields. From there, I delimited the line syntatically with ";" and commented out the last quote in order to end the search query.
+
+### Injecting the UNION Clause
+
