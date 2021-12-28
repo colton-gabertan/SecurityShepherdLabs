@@ -13,6 +13,15 @@ In this challenge, we are now asked to target a specific user, rather than perfo
 
 Luckily, it doesn't look like this filter is as beefy as the last one; however, the difficulty in performing this injection is guessing the names of the parameters within the search query. By default, looking at the web form, it seems it just dumps general information about the users entered, rather than a specific field, so we can infer that the query looks a bit like:
 ```MySQL
-SELECT * FROM customers WHERE customer_name=''
+SELECT * FROM customers WHERE customer_name='';
 ```
 
+This query is alright for dumping general information about a given user; however, we are specifically looking for Mary Martin's credit card number. A query that might return that information may be:
+```MySQL
+SELECT credit_card_number FROM customers WHERE customer_name='Mary Martin';
+```
+
+So essentially, instead to accessing general information that is publicly accessible we need to modify the original search query so that it includes the fields we want to access. This is where the UNION operator comes in handy. Syntatically, this allows us to combine search queries in SQL. The full query after our injection should look like:
+```MySQL
+SELECT * FROM customers WHERE customer_name='Mary Martin' UNION SELECT credit_card_number FROM customers WHERE customer_name='Mary Martin';
+```
