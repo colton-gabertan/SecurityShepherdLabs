@@ -1,12 +1,7 @@
-# Week04
-**Index of lab walkthroughs:**
+# SQL Injection: Escaping
 
-* [SQL Injection]
-* [SQLI 1]
-* [SQLI 2]
-* [SQLI Escaping]
+**Instructions:**
 
-[SQL Injection]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQL-Injection/README.md
-[SQLI 1]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-1/README.md
-[SQLI 2]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-2/README.md
-[SQLI Escaping]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-Escaping/README.md
+To complete this challenge, you must exploit SQL injection flaw in the following form to find the result key. The developer of this level has attempted to stop SQL Injection attacks by escaping apostrophes so the database interpreter will know not to pay attention to user submitted apostrophes.
+
+## Lab Walkthrough
