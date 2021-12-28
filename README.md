@@ -38,7 +38,7 @@ I included Mary Martin's name in the first part in order to satisfy the field's 
 ### Injecting the UNION Clause
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-3/SQLI3.gif">
 
---
+---
 
 ### Developer Considerations
 
