@@ -38,6 +38,8 @@ I included Mary Martin's name in the first part in order to satisfy the field's 
 ### Injecting the UNION Clause
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/SQLI-3/SQLI3.gif">
 
+As you can see, we're able to access a part of the database from the front-end that should not be available to general users. It seems the restrictions set on the database aren't present.
+
 ---
 
 ### Developer Considerations
