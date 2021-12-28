@@ -75,6 +75,22 @@ theKey = "kpoisaijdieyjaf";
 var theAlphabet =   "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
 ```
 
-theKey seems like it will work in conjunction with theAlphabet. Taking a look at the commented validation section, all it seems to do is make the key all uppercase, and ensure that each character is an english letter. Not much going on there.
+theKey seems like it will work in conjunction with theAlphabet. Taking a look at the commented validation section, all it seems to do is make the key all uppercase, and ensure that each character is an english letter. Not much going on there. However, the "transform input" section is a bit more interesting. 
 
+There is an empty output variable that gets mutated using index values of the alphabet and the key. Some interesting key points in this code snippet are the use of the modulo (%) and its implementation with the key and alphabet:
+``` javascript
+if(lowercase)
+	currentCharValue = currentCharValue % 26 + 26;
+else
+	currentCharValue %= 26;
+output += theAlphabet.charAt(currentCharValue);
+theKeysCurrentIndex =(theKeysCurrentIndex + 1) % theKeysLength;
+```
+
+The modulo operator is used to perform integer division and return the remainder of the operation, making it a useful operator to implement a wrapping function within code. Seeing that there are 26 letters in the alphabet, this function seems to wrap a lot, as if the values could be represented by a table. 
+
+One cryptographic algorithm that uses a key and wrapping is called the Vigenere Cipher. 
+
+### Vigenere Cipher
+<img src="https://www.youtube.com/watch?v=SkJcmCaHqS0">
 
