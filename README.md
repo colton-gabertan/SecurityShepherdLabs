@@ -66,3 +66,15 @@ $("#leForm").submit(function(){
 	});
 });
 ```
+
+Let's reverse engineer this function a little bit to see if it's a widely recognized crypto implementation or if it's completely custom.
+
+Here we have some statically defined values that will offer some hints.
+```javascript
+theKey = "kpoisaijdieyjaf";
+var theAlphabet =   "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
+```
+
+theKey seems like it will work in conjunction with theAlphabet. Taking a look at the commented validation section, all it seems to do is make the key all uppercase, and ensure that each character is an english letter. Not much going on there.
+
+
