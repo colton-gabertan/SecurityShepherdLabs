@@ -92,4 +92,6 @@ The modulo operator is used to perform integer division and return the remainder
 One cryptographic algorithm that uses a key and wrapping is called the Vigenere Cipher. 
 
 ### Vigenere Cipher
-[![Vigenere Cipher](https://img.youtube.com/vi/SkJcmCaHqS0/0.jpg)](http://www.youtube.com/watch?v=SkJcmCaHqS0)
+<p align="center">
+[![Vigenere Cipher](https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Cryptographic-Storage-2/vigenere.gif)](http://www.youtube.com/watch?v=SkJcmCaHqS0)
+</p>
