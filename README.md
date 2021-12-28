@@ -1,22 +1,22 @@
-# Insecure Cryptographic Storage
+# Insecure Cryptographic Storage Challenge 1
 
 **Instructions:**
 
-The decision has been made that the result key to this lesson should not be publicly available. To achieve this, the development team have decided to encode the result key with base64... recover it to complete the lesson.
+The result key has been encrypted to ensure that nobody can finish the challenge without knowing the secret key to decrypt it. However, the result key has been encrypted with a famous, but easily broken, Roman cipher. The Plain text is in English.
 ```
-YmFzZTY0aXNOb3RFbmNyeXB0aW9uQmFzZTY0aXNFbmNvZGluZ0Jhc2U2NEhpZGVzTm90aGluZ0Zyb21Zb3U=
+Ymj wjxzqy pjd ktw ymnx qjxxts nx ymj ktqqtbnsl xywnsl; rdqtajqdmtwxjwzssnslymwtzlmymjknjqibmjwjfwjdtzltnslbnymdtzwgnlf
 ```
 
 ## Lab Walkthrough
 
-As we are familiar with *encoding* in base64, I'd like to mention that *encryption* and *encoding* are different and should not be used as interchangeable terms. We encode data so that it makes it more universally transferrable and readable by other parts of the web application. In some cases, encoding even helps to compress data a bit, increasing the transfer speed and reducing the virtual size of our data. 
+This is now an example of encryption, rather than encoding. In order to crack it, we need to know which cipher is used as well as the *key* information we need to solve it. Luckily by the hint, we know it is a Caesar's Cipher. Essentially, all a Caesar's Cipher does is shift or *rotate* the letters a certain amount of letters away from the original in order to spit out the ciphertext. 
 
-Encryption, on the other hand, is intentionally used to hide data from malicious users. Encoding is made to be easily reversable into readable formats, while encryption always requires some other component in order to decrypt the ciphers. Therefore, using encoding as a means to encrypt is a very bad idea, instead, developers should be aware of best practices when it comes to handling sensitive information. There are well established cryptographic functions that are a reliable means to implement encryption into their applications.
+Here we are given the string to decrypt. The way that it works in terms of how to actually code a cipher such as this one, we need knowledge of the ascii table. This is the format that computers can use in order to identify letters of the alphabet. 
 
-Anyways, for this first lab, I'd like to introduce you to one of my favorite tools, [Cyber Chef]. It is extremely useful for situations in which you need to decode/encode data. It also supports some unique features regarding cryptographic topics, such as using specific algorithms to encrypt and decrypt data.
+### ASCII Codes of the Alphabet
+![image](https://user-images.githubusercontent.com/66766340/147606782-71ccd3df-56bf-4583-bc60-dc9052984d04.png)
 
-### Decoding Using CyberChef
-<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Insecure-Cryptographic-Storage/ICS.gif">
+If you wanted to implement a Caesar's Cipher, also known as ROT13, we'd simply be working with the ascii values of the table, so 65-90 (UpperCase) & 97-122 (lowercase). Say Alice wanted to send Bob a ROT13-encrypted message, both of them would need to know the amount of letters that they will shift for the message. Furthermore, say Alice would like the rotational value to be 13, every letter will get shifted 13 letters over, wrapping each time it reaches the end of its section. 
 
+Therefore if we wanted to send the capital letter "A", it would shift to the capital letter "N". For Bob to decrypt it, he would take the ascii value of "N", which is 78, subtract 13 to get 65 and translate it back to plaintext, "A". 
 
-[Cyber Chef]: https://gchq.github.io/CyberChef/
