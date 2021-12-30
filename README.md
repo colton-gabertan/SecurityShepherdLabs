@@ -111,4 +111,4 @@ Let's hop back onto CyberChef and see if we can crack this Vigenere implementati
 ### Cracking Vigenere Cipher w/ CyberChef
 ![image](https://user-images.githubusercontent.com/66766340/147610379-45ca6212-d0ee-42fd-a7ff-48b07926892f.png)
 
-As you can see, the developers left their crypto implementations out in the open. This allowed us to extract the necessary information to crack their encrytion. It is also generally bad practice to have a validation such as this one, as it makes it extremely easy to bypass certain securities in other types of user input forms. For example, if passwords were validated in this manner, it would be easy to recover the plaintexts. 
+As you can see, the developers left their crypto implementations out in the open. This allowed us to extract the necessary information to crack their encrytion. It is also generally bad practice to have a validation such as this one, as it makes it extremely easy to bypass certain securities in other types of user input forms. For example, if passwords were validated in this manner, it would be easy to recover the plaintexts or bypass the function all together. 
