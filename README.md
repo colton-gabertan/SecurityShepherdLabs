@@ -75,8 +75,35 @@ Once Bob has the key pair, he would only send over the public key to Alice. By i
 
 At this point, Alice would encrypt her message. Luckily, CyberChef supports PGP encryption:
 
+### Encrypting Using PGP
+![image](https://user-images.githubusercontent.com/66766340/147784567-b45f13f8-97e7-4d1c-a29d-01a42b9ade01.png)
 
+As you can see, the message looks a bit like the key. Encrypted and unreadable to humans.
+```
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.15
+Comment: https://keybase.io/crypto
 
+wcFMA7vweZ81Rd+PAQ//cf/suG9u5SUeLQjbsrSJYpEowbZ7h+9GkkeIUsO2uMBt
+Gq08/jlIBTXNkmx4bvPOSAJnWIw3DoVCkCoeNW3YNrnC9bZ9OhVZVT+wrjCk3kRn
+hmmB9iVN7jHaRC7gcPkJu2HwmaNZ6j1c/xX2gTTe7vTNr8UaasqdgTtYivWyKZq2
+5hOTpcsPH0LkjR5xe22ulJNiDWZQSw1yJs9jOcFs7VlA1wixwe3yCV3NvVb5sR5a
+xZqRzEbN5q5HugXbZPaoiUHcX/R27bKn66qHcO7LMXFBxMhL5u+1OiK41Ua9ipGs
+d4W7+GQDqtbWu1YKdr6EFds9k6FCQMOb2oiGLSwZ4nBjZxsGp/mADZdSF/aFGeCN
+5QVd5C/xiXqpIyAAYf/w8ylg2FU5UCr4P04TA6l5+2rhJjiRgID/isyFqgfzX9kx
+Bnl0qKzGbLwsve2MG+JhXQheuQQKNkNBypJ+BEVfNgRICtbadj5xaiL6VYr8bmMw
+LXOjUMo4tR+JhiU0+N3n57IY/WfBoV36Sj50qyEUbmmDkz9BO4xOCkgAz1RmHtHB
+THqgo8/aXkItG/hSJYVg3BqUGz1spDEZnrxD9HydoBd+nH2oyQRqTrXszCQPbF3Y
+xDkACWS4LYvXlK5aBI/fHU3bCioQ9LhVs548nqyYkDCUofT/fepmrFnzBAIxP0/S
+igH9zYFP3fF+d0H/k+p4n0hV/qjyKmuD9ZqLN5I+idoYJW2AOH1cIsFHwV1UlFbI
+Jl3V/QzlX8GfoWO/+cgeBiJcmINi7KjycWsfQ1vRI6pYb81l7VTgW+jDoizcyLX5
+gKkaTFlODqNvQugp7oI3eTeRNo6jKHhltVf2pV+90O62+7b3r9uGftJ8cg==
+=Tiu3
+-----END PGP MESSAGE-----
+
+```
+
+At this point, Alice would send her encrypted message to Bob. Then, he could decrypt it using his private key on the host machine. Anyone listening in on their conversation could intercept the message; however, only Bob could decrypt it. 
 
 [GPG Suite]: https://gpgtools.org/
 [Gpg4win]: https://www.gpg4win.org/
