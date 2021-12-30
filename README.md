@@ -18,7 +18,7 @@ Here we are given the string to decrypt. The way that it works in terms of how t
 
 If you wanted to implement a Caesar's Cipher, also known as ROT13, we'd simply be working with the ascii values of the table, so 65-90 (UpperCase) & 97-122 (lowercase). Say Alice wanted to send Bob a ROT13-encrypted message, both of them would need to know the amount of letters that they will shift for the message. Furthermore, say Alice would like the rotational value to be 13, every letter will get shifted 13 letters over, wrapping each time it reaches the end of its section. 
 
-Therefore if we wanted to send the capital letter "A", it would shift to the capital letter "N". For Bob to decrypt it, he would take the ascii value of "N", which is 78, subtract 13 to get 65 and translate it back to plaintext, "A".
+Therefore if Alice wanted to send the capital letter "A", it would shift to the capital letter "N". For Bob to decrypt it, he would take the ascii value of "N", which is 78, subtract 13 to get 65 and translate it back to plaintext, "A". This is known as symmetric encryption, as there is only one key used to both encrypt and decrypt data.
 
 As you can see it is a pretty weak form of crypto as it would only take a max of 25 tries to crack the ciphertext. However, it serves as a gentle introduction to cryptography as we start to see other weak implementations.
 
