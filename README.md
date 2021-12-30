@@ -23,9 +23,6 @@ Say value 1 and value 2 were hex-encoded plaintext messages, if we xor them, we 
 
 One thing to note is that we need our values to be of the same length in binary. Let's start by creating a function that we will use to set a fixed length for our binary values in order to perform a successful xor.
 ```python
-# getLength: finds final length for binary values
-# parameters: bin1, bin2
-# return: length to match binary values
 def getLength(bin1, bin2):
 
 	length = len(bin1) if len(bin1) > len(bin2) else len(bin2)
