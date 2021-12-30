@@ -6,7 +6,7 @@
 * [Insecure Cryptographic Storage Challenge 2]
 * [PGP]
 
-**Bonus: Fixed XOR & XOR Brute Force Python Scripts for CTF Assignments
+**Bonus: Fixed XOR & XOR Brute Force Python Scripts for CTF Assignments**
 
 * [Fixed XOR]
 
