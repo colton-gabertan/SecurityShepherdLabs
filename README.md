@@ -65,3 +65,18 @@ LvCc
 ```
 ## Lab Walkthrough
 
+In the previous challenges, we've only really dealt with symmetric encryption in which there is pretty much only one key component used to encrypt and decrypt data. Here, we're going to take a look at a widely used *asymetric* encryption method known as Pretty Good Privacy (PGP). 
+
+In a practical application, this challenge would be one of the last steps in sending over a message using PGP. Realistically, if Alice wanted to send Bob a message using PGP, Bob would first have to generate a *public* key as well as a *private* key. This can be done so using a variety of software tools such as:
+* [GPG Suite]
+* [Gpg4win]
+
+Once Bob has the key pair, he would only send over the public key to Alice. By its name, public keys are generally safe for anyone to have as in the encryption process, it encrypts messages but *only* the private key can decrypt messages encrypted by the public key.
+
+At this point, Alice would encrypt her message. Luckily, CyberChef supports PGP encryption:
+
+
+
+
+[GPG Suite]: https://gpgtools.org/
+[Gpg4win]: https://www.gpg4win.org/
