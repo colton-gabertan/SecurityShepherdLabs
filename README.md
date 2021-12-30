@@ -63,7 +63,7 @@ This will return a list of the xor'ed bits. If we were to print it as is, it wou
 ``` python
 [1,0,1,0,0...]
 ```
-So, to help with the final formatting, we can convert it back to a str data type, and from there we can convert it from a binary str to a hex str, yielding us the encrypted hex string. So, to get the hex string:
+So, to help with the final formatting, we can convert it back to a str data type, and from there we can convert it from a binary str to a hex int, yielding us the encrypted hex value. So, to get the hex value:
 ```python
 xorStr = "".join([str(bits) for bits in xor])
 finalXor = hex(int(xorStr, 2))[2:]
