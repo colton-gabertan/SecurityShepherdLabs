@@ -39,9 +39,9 @@ binVal1 = bin(int(userInput1, 16))[2:]
 binVal2 = bin(int(userInput2, 16))[2:]
 ```
 
-To pick apart how I get from a hex *string* to a binary *integer*, the function int() accepts two arguments. It accepts, first the value to be casted and then the base of the number. Hexadecimal has a base of 16. So, int(hexString, 16) effectively turns a data-type str, hexString, into a hexadecimal numerical data type, int. Once we have our hex string as a hex int, we must convert it to binary with the bin() function. My only gripe with the bin() function is that it always pre-pends the return value with "0b", so in order to just get the binary, we have to slice off the "0b" with [2:].
+To pick apart how I get from a hex *string* to a binary *integer*, the function `int()` accepts two arguments. It accepts, first the value to be casted and then the base of the number. Hexadecimal has a base of 16. So, `int(hexString, 16)` effectively turns a data-type str, hexString, into a hexadecimal numerical data type, int. Once we have our hex string as a hex int, we must convert it to binary with the `bin()` function. My only gripe with the `bin()` function is that it always pre-pends the return value with "0b", so in order to just get the binary, we have to slice off the "0b" with `[2:]`.
 
-From here, our script can turn hex strings into binary digits, and it can determine a length to set our binary digits up for a proper xor. Usually when working with unsigned binary values of different lengths, we perform a zero-fill until they are the same length. Luckily, python has a function that does just that, zfill(). We will use this function to complete the formatting of our data and move onto the xor operation. 
+From here, our script can turn hex strings into binary digits, and it can determine a length to set our binary digits up for a proper xor. Usually when working with unsigned binary values of different lengths, we perform a zero-fill until they are the same length. Luckily, python has a function that does just that, `zfill()`. We will use this function to complete the formatting of our data and move onto the xor operation. 
 
 I decided to zfill the binary values in the same function that will xor them.
 ```python
@@ -67,7 +67,7 @@ xorStr = "".join([str(bits) for bits in xor])
 finalXor = hex(int(xorStr, 2))[2:]
 ```
 
-Using list comprehension once again, we simply append each bit, but casted as a str to an empty string, leaving us with the binary str. From there, we cast it back to a binary digit with the int(binaryStr, 2) and convert it back to hex(), slicing off the pre-pended "0x" from the hex() function.
+Using list comprehension once again, we simply append each bit, but casted as a str to an empty string, leaving us with the binary str. From there, we cast it back to a binary digit with the `int(binaryStr, 2)` and convert it back to `hex()`, slicing off the pre-pended "0x" from the `hex()` function.
 
 And with that, we've performed the operation. By the xor encryption scheme, the same operation, but performed with the encrypted value and original ones will essentially decrypt (or encrypt) the messages. This is why I wrote the script to take cmd-line args, instead of hard-coded values.
 
