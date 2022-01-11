@@ -69,7 +69,7 @@ finalXor = hex(int(xorStr, 2))[2:]
 
 Using list comprehension once again, we simply append each bit, but casted as a str to an empty string, leaving us with the binary str. From there, we cast it back to a binary digit with the int(binaryStr, 2) and convert it back to hex(), slicing off the pre-pended "0x" from the hex() function.
 
-And with that, we've performed the operation. By the xor encryption scheme, the same operation, but performed with the encrypted value and original ones will essentially decrypt the messages. This is why I wrote the script to take cmd-line args, instead of hard-coded values.
+And with that, we've performed the operation. By the xor encryption scheme, the same operation, but performed with the encrypted value and original ones will essentially decrypt (or encrypt) the messages. This is why I wrote the script to take cmd-line args, instead of hard-coded values.
 
 To glue all of this logic together, you can take a look at the full script [here]:
 ``` python
