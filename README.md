@@ -52,6 +52,7 @@ def xorVals(length, bin1, bin2):
 ```
 
 So, we now have the binary digits and they are the same size, ready for the xor operation. In python, it is particularly easy to do this by zipping the values together and xor'ing each bit using a list comprehension. It can be done in one line like so:
+> zipping two lists together results in a tuple. In order to access both of the tuple values, we must use the variables (I used `x` and `y`) and then proceeded to store the xor'd values in a list.
 ``` python
 xor = [int(x)^int(y) for x,y in zip(bin1, bin2)]
 ```
