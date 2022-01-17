@@ -1,135 +1,51 @@
-# Fixed XOR
+# XOR Brute Force
 
 **Description:**
 
-This python script performs a fixed XOR operation on hex values. This is used as weak symmetric encryption algorithm.
+This python script tries to crack a single-key XOR encryption with brute forcing techniques.
 
-## fixedXor.py 
+## xorBruteForce.py 
 
-Before we get into coding the script, you must first understand how the xor operation works on a set of binary digits. "XOR" (^) stands for "exclusive or", meaning in order for this operation to evaluate to true, both of the operands must be different. So, only a 1 ^ 0 or a 0 ^ 1 will evaluate to 1. 1 ^ 1 and 0 ^ 0 both evaluate to 0.
+Building upon our understanding of xor encryption, we will now introduce the concept of the key when it comes to this type of encryption. Essentially, this `key` will be used to both encrypt and decrypt data. It does so by xor-ing each bit by the key, thus making this key the crucial piece of information to figure out when trying to crack this implementation. 
 
-Given 01101001 and 00111010 we can xor these two values like so: \
-*starting from the right-most bit going to the left*
+To start off, we will assume that the ciphertext is English, and will be a legible message for the purpose of the assignment. Thanks to data studies of the English language, there is a chart that will help us map the frequencies of each letter (on average) given a legitimate piece of English text. We can leverage this chart to analyze the strings that our algorithm will process. We will be sorthing the strings from *most-likely* to be English to *least-likely*.
 
-### Fixed XOR as Encryption & Decryption
-```
-01101001 - value 1      01010011 - encrypted              01010011 - encrypted
-00111010 - value 2      00111010 - value 2                01101001 - value 1
---------                --------                          --------
-01010011 - encrypted    01101001 - value 1 (decrypted)    00111010 - value 2 (decrypted) 
-```
-
-Say value 1 and value 2 were hex-encoded plaintext messages, if we xor them, we get an encrypted hex string. But taking the encrypted hex string and xor'ing it by the original values essentially decrypts the messages. This is why it is an easy crypto to break. However, the focus is on writing a script that performs this operation.
-
-One thing to note is that we need our values to be of the same length in binary. Let's start by creating a function that we will use to set a fixed length for our binary values in order to perform a successful xor.
+### English Character Frequencies
 ```python
-def getLength(bin1, bin2):
-
-	length = len(bin1) if len(bin1) > len(bin2) else len(bin2)
-
-	return length
+charFrequencies = {
+	'a': .08167, 'b': .01492, 'c': .02782, 'd': .04253,
+        'e': .12702, 'f': .02228, 'g': .02015, 'h': .06094,
+        'i': .06094, 'j': .00153, 'k': .00772, 'l': .04025,
+        'm': .02406, 'n': .06749, 'o': .07507, 'p': .01929,
+        'q': .00095, 'r': .05987, 's': .06327, 't': .09056,
+        'u': .02758, 'v': .00978, 'w': .02360, 'x': .00150,
+        'y': .01974, 'z': .00074, ' ': .13000
+}
 ```
+> For example, the letter `a` will show up as 8.167% of the text, given legitimate English words
 
-Personally, to allow for more flexibility of the script, I want it to accept cmd-line args so we can xor any two hex values, rather than hard-coding it into our script. In the main function, I scan the user input and convert the expected hex strings into binary integers.
+Our goal is to craft a function that will take a byte string as a parameter, analyze the string based on the chart, and assign it a score that we will use to sort the output. Thanks to list comprehensions and the `sum()` function, we can do so in one line.
 ```python
-userInput1 = str(sys.argv[1])
-userInput2 = str(sys.argv[2])
-
-binVal1 = bin(int(userInput1, 16))[2:]
-binVal2 = bin(int(userInput2, 16))[2:]
+return sum([charFrequencies.get(chr(byte), 0) for byte in byteString.lower()])
 ```
 
-To pick apart how I get from a hex *string* to a binary *integer*, the function `int()` accepts two arguments. It accepts, first the value to be casted and then the base of the number. Hexadecimal has a base of 16. So, `int(hexString, 16)` effectively turns a data-type str, hexString, into a hexadecimal numerical data type, int. Once we have our hex string as a hex int, we must convert it to binary with the `bin()` function. My only gripe with the `bin()` function is that it always pre-pends the return value with "0b", so in order to just get the binary, we have to slice off the "0b" with `[2:]`.
+Now that we have established a method to analyze a piece of English text, we need to now implement the decryption and guess the single-character key used. A good starting point in gathering the data set that will be used as the `possible` key, would be any printable character. Luckily, the built-in `string` module in Python3 can handle this elegantly with `string.printable`. 
 
-From here, our script can turn hex strings into binary digits, and it can determine a length to set our binary digits up for a proper xor. Usually when working with unsigned binary values of different lengths, we perform a zero-fill until they are the same length. Luckily, python has a function that does just that, `zfill()`. We will use this function to complete the formatting of our data and move onto the xor operation. 
+From there, all we need to do is format the data correctly, peform the decryption, score the strings, and then sort our output. Similarly to the fixed-xor implementation, we will be accepting a hex value as a parameter. So, we need to xor each byte of the `hexVal` with the bits of the `possibleKey`. In one nested `for` loop, we can decrypt, score, and sort like so:
 
-I decided to zfill the binary values in the same function that will xor them.
+### Decryption Algorithm
 ```python
-def xorVals(length, bin1, bin2):
+possible = string.printable
 
-	bin1.zfill(length)
-	bin2.zfill(length)
+scores = []
+for possibleKey in possible:
+	decrypted = b''
+
+	for byte in hexVal:
+		decrypted += bytes([int(byte)^ord(possibleKey)])
+			
+	score = scoreString(decrypted)
+	scores.append([decrypted, score])
+
+scored = sorted(scores, key=itemgetter(1), reverse=True)
 ```
-
-So, we now have the binary digits and they are the same size, ready for the xor operation. In python, it is particularly easy to do this by zipping the values together and xor'ing each bit using a list comprehension. It can be done in one line like so:
-> zipping two lists together results in a tuple. In order to access both of the tuple values, we must use the variables (I used `x` and `y`) and then proceeded to store the xor'd values in a list.
-``` python
-xor = [int(x)^int(y) for x,y in zip(bin1, bin2)]
-```
-
-This will return a list of the xor'ed bits. If we were to print it as is, it would look like:
-``` python
-[1,0,1,0,0...]
-```
-So, to help with the final formatting, we can convert it back to a str data type, and from there we can convert it from a binary str to a hex int, yielding us the encrypted hex value. So, to get the hex value:
-```python
-xorStr = "".join([str(bits) for bits in xor])
-finalXor = hex(int(xorStr, 2))[2:]
-```
-
-Using list comprehension once again, we simply append each bit, but casted as a str to an empty string, leaving us with the binary str. From there, we cast it back to a binary digit with the `int(binaryStr, 2)` and convert it back to `hex()`, slicing off the pre-pended "0x" from the `hex()` function.
-
-And with that, we've performed the operation. By the xor encryption scheme, the same operation, but performed with the encrypted value and original ones will essentially decrypt (or encrypt) the messages. This is why I wrote the script to take cmd-line args, instead of hard-coded values.
-
-To glue all of this logic together, you can take a look at the full script [here]:
-``` python
-#!/usr/bin/env python3
-
-### imports for program
-import sys
-
-##################################################################################
-### function implementations
-##################################################################################
-
-# getLength: finds final length for binary values
-# parameters: bin1, bin2
-# return: length to match binary values
-def getLength(bin1, bin2):
-
-	length = len(bin1) if len(bin1) > len(bin2) else len(bin2)
-
-	return length
-
-# xorVals: formats binary values and xor's each bit
-# parameters: length, bin1, bin2
-# return: returns hex string, resulting from xor operation
-def xorVals(length, bin1, bin2):
-
-	bin1.zfill(length)
-	bin2.zfill(length)
-
-	xor = [int(x)^int(y) for x,y in zip(bin1, bin2)]
-	xorStr = "".join([str(bits) for bits in xor])
-	finalXor = hex(int(xorStr, 2))[2:]
-
-	return finalXor
-
-##################################################################################
-### Main entry point for program
-##################################################################################
-
-# main: reads cmd-line args and xor's hex strings
-#       usage: ./fixedXor.py <hex value 1> <hex value 2>
-# parameters: n/a
-# return: prints xor'd hex strings as a hex value
-def main():
-
-	userInput1 = str(sys.argv[1])
-	userInput2 = str(sys.argv[2])
-
-	binVal1 = bin(int(userInput1, 16))[2:]
-	binVal2 = bin(int(userInput2, 16))[2:]
-
-	length = getLength(binVal1, binVal2)
-	xord = xorVals(length, binVal1, binVal2)
-
-	print(xord)
-
-if __name__ == '__main__':
-
-	main()
-
-```
-
-[here]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/Fixed-XOR/fixedXor.py
