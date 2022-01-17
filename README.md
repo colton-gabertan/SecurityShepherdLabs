@@ -8,7 +8,7 @@ This python script tries to crack a single-key XOR encryption with brute forcing
 
 Building upon our understanding of xor encryption, we will now introduce the concept of the key when it comes to this type of encryption. Essentially, this `key` will be used to both encrypt and decrypt data. It does so by xor-ing each bit by the key, thus making this key the crucial piece of information to figure out when trying to crack this implementation. 
 
-To start off, we will assume that the ciphertext is English, and will be a legible message for the purpose of the assignment. Thanks to data studies of the English language, there is a chart that will help us map the frequencies of each letter (on average) given a legitimate piece of English text. We can leverage this chart to analyze the strings that our algorithm will process. We will be sorthing the strings from *most-likely* to be English to *least-likely*.
+To start off, we will assume that the ciphertext is English, and will be a legible message for the purpose of the assignment. Thanks to data studies of the English language, there is a chart that will help us map the frequencies of each letter (on average) given a legitimate piece of English text. We can leverage this chart to analyze the strings that our algorithm will process. We will be sorting the strings from *most-likely* to be English to *least-likely*.
 
 ### English Character Frequencies
 ```python
