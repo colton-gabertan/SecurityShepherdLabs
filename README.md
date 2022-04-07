@@ -1,7 +1,7 @@
 # WordPress vs. Kali Docker Setup
 
 In order to simplify the installation and configuration of our at-home pentesting lab, CodePath has created and pre-configured Docker containers to help us get set up with a few simple keystrokes.
-> For those of you who don't know, Docker is a service that allows developers to pre-configure packages with all the dependencies needed in order to successfully run a program or service. It runs at the kernel level and allows for extremely fast, light-weight virtual environments in which you can do a multitude of things such as develop software and, in our case, set up a penetration testing lab for WordPress.
+> For those of you who don't know, Docker is a service that allows developers to pre-configure packages with all the dependencies needed in order to successfully run a program or service. It runs at the kernel level and allows for extremely fast, light-weight, virtual environments in which you can do a multitude of things such as develop software and, in our case, set up a penetration testing lab for WordPress.
 
 Our Docker containers will include:
 * WordPress vulnerable server (hosted locally)
