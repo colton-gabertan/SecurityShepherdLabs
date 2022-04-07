@@ -132,10 +132,25 @@ wpscan --url http://127.0.0.1:8080 --api-token <paste your token here>
 
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/wpscandemo.gif">
 
+Observing the output from `wpscan` we can see all of the vulnerabilities that it reports! Since this is a lab, make sure you mess around with your site, adding more and more to the attack surface for `wpscan` to pick up on. Practice by exploiting the vulnerabilities you incorporate and overall, have fun with it!
 
+## Step 5: Cleanup
 
+Since we will not be running our containers 24/7 we need to know how to shut them off and be able to spin them back up for later use.
 
+We can exit the kali container with:
+```bash
+exit
+```
 
+From here, we need to run:
+```bash
+docker-compose down
+```
 
+![image](https://user-images.githubusercontent.com/66766340/162323623-fc461ef0-3855-4aab-9668-2fb8486be192.png)
 
-
+With that, you've shut down your containers; however, spinning them back up is as simple as:
+```bash
+docker-compose up -d
+```
