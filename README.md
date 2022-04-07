@@ -98,6 +98,40 @@ docker exec -it <CONTAINER ID> bash
 
 If you have successfully followed the installation guide to this point, you should have your vulnerable WordPress Server up and running in your browser, and you should be accessing the Kali container from your command line.
 
+The last thing do do for this step is to ensure that our Kali container can communicate with our WordPress server. A neat network troubleshooting tool is `ping`, and we will take advantage of it like so:
+
+```bash
+ping -c 3 127.0.0.1
+```
+> This will send 3 little packets over to our server, and report if they are dropped or recieved. If recieved, we now know that our Kali box can reach our WordPress server.
+
+![image](https://user-images.githubusercontent.com/66766340/162311645-76594e72-4a4e-4c5b-bb73-a0912cd49f57.png)
+
+At this point, we now have our home lab set up and ready to be tweaked/ experimented with! Kali comes default with a plethora of tools we will be unleashing on our vulnerable site; however, for the purposes of our lab, we must properly configure `wpscan`.
+
+## Step 4: Configuring and Using `wpscan`
+
+In the Kali box, run:
+
+```bash
+wpscan --version
+```
+And your expected output should be:
+
+![image](https://user-images.githubusercontent.com/66766340/162314601-53232bf6-3f29-4037-bee0-1ad86d634134.png)
+> If your current version doesn't match, or if you would like it to be the latest, run `wpscan --update`
+
+One thing to note about `wpscan` specifically is it requries the use of an api token, which in turn, requires that we register and make an account at https://wpscan.com/. Once registered and logged in, you can locate your api token here:
+
+![image](https://user-images.githubusercontent.com/66766340/162316224-28487b7c-b4d5-4111-a000-ae71341e2990.png)
+
+With this token, we can now conduct a scan against our WordPress server. The command is:
+```bash
+wpscan --url http://127.0.0.1:8080 --api-token <paste your token here>
+```
+
+
+
 
 
 
