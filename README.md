@@ -20,3 +20,32 @@ Docker install links:
 
 > Windows 10 users, you must be running version 19041 or higher. Windows 11 users, you must be running version 21H2 or higher. WSL2 must also be installed to support Docker. For Mac OSX users, you must start up Docker from the CLI.
 
+Once installed you can run `docker --version` to ensure that everything ran correctly and that Docker is on your system.
+
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/dockerinstall.gif">
+
+## Step 2: Getting the Images and Spinning Up The Containers
+
+Another wonderful thing about Docker is that it heavily supports open source development and people can make their containers available for install and use to the general public. We will be pulling a githup repo that contains all of the necessary Docker files onto our machines. 
+
+From there, all we have to do is spin it up and sit tight for a couple of minutes.
+
+The first thing to do is create a directory in which we can hold all of the files for our lab this week. I've opted to create a codepath folder on my desktop. I recommend doing it this way so nothing gets lost, and we can keep all of our related files together. 
+
+On windows:
+```powershell
+cd $HOME/desktop
+mkdir codepath/kalivswp
+cd wpvskali
+```
+
+In this directory, we can clone the repo like so
+```
+git clone https://github.com/0xrutvij/wpVSkali.git
+```
+
+After doing so, check if all of the files are in our `kalivswp` directory. Cloning the repository will create a new folder named `wpVSkali`. We can check the files with:
+```powershell
+cd wpVSkali
+ls
+```
