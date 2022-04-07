@@ -65,6 +65,37 @@ The command to run from here is:
 ```powershell
 docker-compose up -d
 ```
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/dockercompose.gif">
+
+After a couple minutes or less, you should get some success messages confirming that three containers have started:
+![image](https://user-images.githubusercontent.com/66766340/162297211-1a73ffd1-e3d4-4de9-afcd-e31e7217dce9.png)
+
+As a sanity check, run:
+```powershell
+docker ps -a
+```
+You should see three containers up and running, along with their `CONTAINER ID`'s.
+
+![image](https://user-images.githubusercontent.com/66766340/162298552-063dfbd6-32d4-4baa-ba8c-f5743eb619db.png)
+
+Now, for further sanity checking, we must ensure that the container for our WordPress server is up and accessible. To do so, open up your browser and navigate to `http://localhost:8080/`.
+> If localhost does not work try:
+> * `http://0.0.0.0:8080/`
+> * `http://127.0.0.1:8080/`
+
+After clicking the `install` button for WordPress and setting up your admin credentials, you should be able to view your WordPress site that is up and running locally on your very own machine and network. I decided to name mine `hackthisbox`.
+
+![image](https://user-images.githubusercontent.com/66766340/162301129-2bdd61df-9150-495d-b685-049977d1356b.png)
+
+Now that we have our vulnerable site up and running, we will also check our Kali machine and if it can access our WordPress site. Back on the command line, run:
+
+```powershell
+docker exec -it <CONTAINER ID> bash
+```
+> The CONTAINER ID should correspond with the kali box. You can see it from the `docker ps -a` command.
+
+
+
 
 
 
