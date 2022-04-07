@@ -130,7 +130,7 @@ With this token, we can now conduct a scan against our WordPress server. The com
 wpscan --url http://127.0.0.1:8080 --api-token <paste your token here>
 ```
 
-
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/wpscandemo.gif">
 
 
 
