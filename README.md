@@ -24,7 +24,7 @@ Once installed you can run `docker --version` to ensure that everything ran corr
 
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/dockerinstall.gif">
 
-## Step 2: Getting the Images and Spinning Up The Containers
+## Step 2: Getting the Images and Docker Files
 
 Another wonderful thing about Docker is that it heavily supports open source development and people can make their containers available for install and use to the general public. We will be pulling a githup repo that contains all of the necessary Docker files onto our machines. 
 
@@ -49,3 +49,24 @@ After doing so, check if all of the files are in our `kalivswp` directory. Cloni
 cd wpVSkali
 ls
 ```
+
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/gitrepo.gif">
+
+## Step 3: Spinning Up The Containers
+
+Before proceeding, within the `wpVSkali` directory, we need to add an aditional directory called `wpFolder`. Simply run `mkdir wpFolder`
+
+Now that we have all the files we need to actually build and use our containers, all we need to do is run some Docker commands and let it work its magic for a few minutes. 
+
+In the `wpVSkali` directory, we need to build the containers from the images. Once built, they will be up and running. From there we can verify this.
+> For Mac Users: you must run `DOCKER_BUILDKIT=1 docker-compose build` before proceeding. Windows users can skip this step.
+
+The command to run from here is:
+```powershell
+docker-compose up -d
+```
+
+
+
+
+
