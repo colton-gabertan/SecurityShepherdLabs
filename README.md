@@ -94,6 +94,10 @@ docker exec -it <CONTAINER ID> bash
 ```
 > The CONTAINER ID should correspond with the kali box. You can see it from the `docker ps -a` command.
 
+<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/kalicheck.gif">
+
+If you have successfully followed the installation guide to this point, you should have your vulnerable WordPress Server up and running in your browser, and you should be accessing the Kali container from your command line.
+
 
 
 
