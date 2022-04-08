@@ -54,7 +54,7 @@ ls
 
 ## Step 3: Spinning Up The Containers
 
-Before proceeding, within the `wpVSkali` directory, we need to add an aditional directory called `wpFolder`. Simply run `mkdir wpFolder`
+Before proceeding, within the `wpVSkali` directory, we need to add an additional directory called `wpFolder`. Simply run `mkdir wpFolder`
 
 Now that we have all the files we need to actually build and use our containers, all we need to do is run some Docker commands and let it work its magic for a few minutes. 
 
