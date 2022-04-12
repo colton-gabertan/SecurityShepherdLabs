@@ -184,7 +184,7 @@ After letting our payload run it's magic, we are greeted with the trusty `meterp
 
 In reference to the Cyber Kill Chain, we have breezed all the way to the Command and Control stage, now having access to our WordPress site's server. Now, one thing to note is that this shell is not as beefy and well developed as the ones we are used to when using linux. So you will have to know your way around a terminal a bit to navigate the directory system.
 
-Commands such as `pwd`, and `ls` are your best friends. At this point, you now need to manually complete the last part of the Cyber Kill Chain, Actions on Objective. 
+Commands such as `pwd`, and `ls` are your best friends. At this point, you now need to manually complete the last part of the Cyber Kill Chain, Actions on Objective. I'll also give you a [meterpreter cheatsheet] for additional commands to use with this reverse shell in particular!
 
 ![image](https://user-images.githubusercontent.com/66766340/162889751-4378f9a3-51d3-4a5d-98e5-97130c311975.png)
 
@@ -221,3 +221,4 @@ Head on over to the course portal and continue: https://courses.codepath.org/cou
 
 [Cyber Kill Chain]: https://www.crowdstrike.com/cybersecurity-101/cyber-kill-chain/
 [CVE's]: https://www.redhat.com/en/topics/security/what-is-cve
+[meterpreter cheatsheet]: https://null-byte.wonderhowto.com/how-to/hack-like-pro-ultimate-command-cheat-sheet-for-metasploits-meterpreter-0149146/
