@@ -6,7 +6,7 @@ Security Shepherd Lab Walkthroughs
 * [Cross Site Scripting]
 * [Remote Code Execution & SQL Injection]
 * [Cryptography]
-* [Kali vs. WordPress]
+* [Kali vs. WordPress] (1/2)
 
 [Data Exposures]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week01/README.md
 [Cookie and Session-based Attacks]: https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week02/README.md
