@@ -193,6 +193,10 @@ Commands such as `pwd`, and `ls` are your best friends. At this point, you now n
 ## Challenge: 
 Traverse your website's file system using linux commands and deface some of the text on your homepage. Then, observe your changes on the website by visiting it.
 
+(hint): good luck using vim as it's the only text editor you can use with meterpreter
+
+![image](https://user-images.githubusercontent.com/66766340/162895553-58f1475e-8b91-4d81-a63c-a8ea8cf76ff0.png)
+
 ---
 
 ## Closing Remarks: Script Kiddie Badge
