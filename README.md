@@ -127,7 +127,7 @@ One thing to note about `wpscan` specifically is it requries the use of an api t
 
 With this token, we can now conduct a scan against our WordPress server. The command is:
 ```bash
-wpscan --url http://127.0.0.1:8080 --api-token <paste your token here>
+wpscan --url http://localhost:8080 --api-token <paste your token here>
 ```
 
 <img src="https://github.com/colton-gabertan/SecurityShepherdLabs/blob/week07/wpscandemo.gif">
